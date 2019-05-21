@@ -1,2 +1,16 @@
 <h1>Welcome, <%= @user.name %></h1>
 <p><%= link_to('Log Out', logout_path) %></p>
+
+
+<%= form_for(@watering, url: user_path(@user), method: :patch) do |f| %>
+<ol>
+<% @user.dispensers.each do |disp| %>
+<li><%= disp.name %> ---- <%= f.select :vacation_days, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40']%></li>
+<% end %>
+</ol>
+<%= f.submit "Set Vacation" %>
+<% end %>
+<br><br>
+<p> or </p>
+<br><br>
+<%= link_to('Register a New Can', new_dispenser_path) %>
