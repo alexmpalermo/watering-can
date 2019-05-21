@@ -30,5 +30,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    if logged_in?
+      session.delete :user_id
+      redirect_to home_path
+    else
+      return redirect_to home_path
+    end
   end
 end
