@@ -1,6 +1,6 @@
 <h1> Log In </h1>
 <br>
-<%= form_for :user, login_path do |f| %>
+<%= form_for(@user) do |f| %>
 Email: <%= f.text_field :email %>
 Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
@@ -10,4 +10,4 @@ Password: <%= f.password_field :password %>
 <p>or</p>
 <br>
 <br>
-<p><%= link_to('Login with Google', '/auth/google') %></p>
+<p><%= link_to('Login with Google', '/auth/google_oauth2') %></p>

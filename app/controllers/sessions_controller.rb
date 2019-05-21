@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
   def login
     if logged_in?
-      redirect_to user_path
+      @user = User.find_by_id(session[:user_id])
+      redirect_to user_path(@user)
+    else
+      @user = User.new 
     end
   end
 
@@ -17,7 +20,7 @@ class SessionsController < ApplicationController
       refresh_token = access_token.credentials.refresh_token
       user.google_refresh_token = refresh_token if refresh_token.present?
       user.save
-      redirect_to home_path
+      redirect_to user_path(user)
     else
       user = User.find_by(:email => params[:user][:email])
       if user && user.authenticate(params[:user][:password])

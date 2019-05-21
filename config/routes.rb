@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/home')
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
+  get '/auth/failure', to: redirect('/home')
 
 
 
