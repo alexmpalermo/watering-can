@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def login
     if logged_in?
       redirect_to user_path
-    end 
+    end
   end
 
   def create
@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
       user.save
       redirect_to home_path
     else
-      user = User.find_by(:email => params[:email])
-      if user && user.authenticate(params[:password])
+      user = User.find_by(:email => params[:user][:email])
+      if user && user.authenticate(params[:user][:password])
         log_in(user)
         redirect_to home_path
       else

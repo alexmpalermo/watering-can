@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    return redirect_to new_user_path unless params[:user][:password] == params[:user][:password_confirmation]
+    @user = User.create(user_params)
+    log_in(@user)
+    redirect_to user_path(@user)
   end
 
   def show
@@ -17,5 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  end 
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 end
