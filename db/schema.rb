@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_175323) do
+ActiveRecord::Schema.define(version: 2019_05_21_193528) do
 
   create_table "containers", force: :cascade do |t|
     t.integer "dispenser_id"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_05_21_175323) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "google_token"
+    t.string "google_refresh_token"
   end
 
   create_table "waterings", force: :cascade do |t|

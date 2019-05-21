@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'pry'
 # Use ActiveStorage variant
