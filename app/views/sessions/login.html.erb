@@ -1,10 +1,13 @@
 <h1> Log In </h1>
-
-<%= form_for :user, sessions_path do |f| %>
-Name: <%= f.text_field :name %>
+<br>
+<%= form_for :user, login_path do |f| %>
 Email: <%= f.text_field :email %>
 Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
 <% end %>
-
+<br>
+<br>
+<p>or</p>
+<br>
+<br>
 <p><%= link_to('Login with Google', '/auth/google') %></p>
