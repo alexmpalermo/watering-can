@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plant_id: 1
+  container_id: 1
+  vacation_days: 1
+  start_vacation: MyString
+  end_vacation: MyString
+  date: MyString
+  leftover: 1
+
+two:
+  plant_id: 1
+  container_id: 1
+  vacation_days: 1
+  start_vacation: MyString
+  end_vacation: MyString
+  date: MyString
+  leftover: 1

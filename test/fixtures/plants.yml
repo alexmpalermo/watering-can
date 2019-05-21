@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dispenser_id: 1
+  name: MyString
+  location: MyString
+  water_quantity: 1
+  water_frequency: 1
+  last_day_watered: MyString
+  next_water_day: MyString
+  needs_water: false
+
+two:
+  dispenser_id: 1
+  name: MyString
+  location: MyString
+  water_quantity: 1
+  water_frequency: 1
+  last_day_watered: MyString
+  next_water_day: MyString
+  needs_water: false
