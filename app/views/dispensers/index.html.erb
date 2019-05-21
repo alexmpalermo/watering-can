@@ -1,11 +1,11 @@
-<h1>Dispenser 1</h1>
-<ol>
-  <li>plant 1</li>
-  <li>plant 2</li>
-</ol>
+<% @user.dispensers.each do |disp| %>
 
-<h1>Dispenser 2</h1>
+<h1><%= link_to(disp.name, dispenser_plants_path(disp)) %></h1>
+
+
+<% disp.plants.each do |plant| %>
 <ol>
-  <li>plant 1</li>
-  <li>plant 2</li>
+  <li><%= plant.name %>, <%= plant.location %></li>
 </ol>
+<% end %>
+<% end %>

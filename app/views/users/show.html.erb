@@ -1,6 +1,6 @@
 <h1>Welcome, <%= @user.name %></h1>
 <p><%= link_to('Log Out', logout_path) %></p>
-
+<p><%= link_to('Dispensers', dispensers_path) %></p>
 
 <%= form_for(@watering, url: user_path(@user), method: :patch) do |f| %>
 <ol>
