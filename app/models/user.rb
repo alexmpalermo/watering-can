@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :dispensers
   has_secure_password
+  validates :name, :email, :password, presence: true
+  validates :email, uniqueness: true
+
 
   def self.from_omniauth(auth)
     # Creates a new user only if it doesn't exist
