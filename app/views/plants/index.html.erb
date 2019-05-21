@@ -1,5 +1,9 @@
-<h1>dispenser 1</h1>
+<h1><%= @dispenser.name %></h1>
+
+<p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
+
+<% @dispenser.plants.each do |plant| %>
 <ol>
-  <li>plant1</li>
-  <li>plant2</li>
+  <li><%= link_to(plant.name, edit_dispenser_plant_path(@dispenser, plant)) %>, <%= plant.location %></li>
 </ol>
+<% end %>

@@ -19,9 +19,13 @@ class DispensersController < ApplicationController
   end
 
   def edit
+    @dispenser = Dispenser.find_by_id(params[:id])
   end
 
   def update
+    @dispenser = Dispenser.find_by_id(params[:id])
+    @dispenser.update(:name => params[:dispenser][:name])
+    redirect_to dispenser_plants_path(@dispenser)
   end
 
   def destroy
