@@ -1,4 +1,6 @@
 class DispensersController < ApplicationController
+  before_action :require_login
+
   def index
     @user = current_user
   end
@@ -31,7 +33,7 @@ class DispensersController < ApplicationController
   def destroy
     @dispenser = Dispenser.find_by_id(params[:id])
     @dispenser.destroy
-    redirect_to dispensers_path 
+    redirect_to dispensers_path
   end
 
 

@@ -26,8 +26,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-      redirect_to home_path unless logged_in?
+      require_login
       session.delete(:user_id)
+      flash[:notice] = "You have successfully logged out."
       redirect_to home_path
   end
 end

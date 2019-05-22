@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+  before_action :require_login
+
   def index
     if @dispenser = Dispenser.find_by_id(params[:dispenser_id])
       @user = User.find_by_id(@dispenser.user_id)
