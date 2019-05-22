@@ -10,11 +10,17 @@ class UsersController < ApplicationController
 
   def create
     logged_in_or_redirect
-    return redirect_to new_user_path unless params[:user][:password] == params[:user][:password_confirmation]
+    if params[:user][:password] != params[:user][:password_confirmation]
+      flash[:error] = "Password must match Password Confirmation."
+      return redirect_to new_user_path
+    end
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
       redirect_to user_path(@user)
+    else
+      flash[:error] = "All fields must be filled in. Email cannot be one that is already used"
+      return redirect_to new_user_path
     end
   end
 
@@ -23,11 +29,13 @@ class UsersController < ApplicationController
       @watering = Watering.new
       redirect_unless_logged_current
     else
-     redirect_to home_path
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to home_path
     end
   end
 
   def update
+  flash[:error] = "Vacation Days must be greater than 0."
   end
 
   private

@@ -20,8 +20,10 @@ class PlantsController < ApplicationController
     @plant = Plant.new(plant_params)
     @plant.dispenser = @dispenser
     if @plant.save
+      flash[:success] = "#{@plant.name} has been successfully created."
       redirect_to dispenser_plants_path(@dispenser)
     else
+      flash[:error] = "All fields must be filled in."
       redirect_to new_dispenser_plant_path(@dispenser)
     end
   end
@@ -35,13 +37,16 @@ class PlantsController < ApplicationController
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.find_by_id(params[:id])
     @plant.update(:name => params[:plant][:name], :location => params[:plant][:location], :water_quantity => params[:plant][:water_quantity], :water_frequency => params[:plant][:water_frequency])
+    flash[:success] = "#{@plant.name} has been successfully updated."
     redirect_to dispenser_plants_path(@dispenser)
   end
 
   def destroy
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.find_by_id(params[:id])
+    name = @plant.name
     @plant.destroy
+    flash[:notice] = "#{name} has been successfully deleted."
     redirect_to dispenser_plants_path(@dispenser)
   end
 
