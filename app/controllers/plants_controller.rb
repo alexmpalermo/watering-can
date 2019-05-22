@@ -36,9 +36,13 @@ class PlantsController < ApplicationController
   def update
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.find_by_id(params[:id])
-    @plant.update(:name => params[:plant][:name], :location => params[:plant][:location], :water_quantity => params[:plant][:water_quantity], :water_frequency => params[:plant][:water_frequency])
-    flash[:success] = "#{@plant.name} has been successfully updated."
-    redirect_to dispenser_plants_path(@dispenser)
+    if @plant.update(:name => params[:plant][:name], :location => params[:plant][:location], :water_quantity => params[:plant][:water_quantity], :water_frequency => params[:plant][:water_frequency])
+      flash[:success] = "#{@plant.name} has been successfully updated."
+      redirect_to dispenser_plants_path(@dispenser)
+    else
+      flash[:error] = "All fields must be filled in."
+      return redirect_to edit_dispenser_plant_path(@dispenser, @plant)
+    end
   end
 
   def destroy
@@ -46,7 +50,7 @@ class PlantsController < ApplicationController
     @plant = Plant.find_by_id(params[:id])
     name = @plant.name
     @plant.destroy
-    flash[:notice] = "#{name} has been successfully deleted."
+    flash[:success] = "#{name} has been successfully deleted."
     redirect_to dispenser_plants_path(@dispenser)
   end
 

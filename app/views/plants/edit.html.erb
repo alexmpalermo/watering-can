@@ -1,4 +1,7 @@
 <h1>Edit This Plant</h1>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 <br>
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :patch) do |f| %>
 Name: <%= f.text_field :name, placeholder: @plant.name %>

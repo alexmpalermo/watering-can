@@ -1,4 +1,10 @@
 <h1>Welcome, <%= @user.name %></h1>
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
+  <% if flash[:success] %>
+    <div class="success"><%= flash[:success] %></div>
+  <% end %>
 <p><%= link_to('Log Out', logout_path) %></p>
 <p><%= link_to('My Watering Cans', dispensers_path) %></p>
 

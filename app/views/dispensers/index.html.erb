@@ -1,4 +1,9 @@
+<% if flash[:success] %>
+  <div class="success"><%= flash[:success] %></div>
+<% end %>
+
 <% @user.dispensers.each do |disp| %>
+
 
 <h1><%= link_to(disp.name, dispenser_plants_path(disp)) %></h1>
 

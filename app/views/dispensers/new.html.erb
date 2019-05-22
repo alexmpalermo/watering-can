@@ -1,4 +1,7 @@
 <h1>Register a New Can</h1>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 <br>
 <%= form_for @dispenser, url: dispensers_path do |f| %>
 Name: <%= f.text_field :name %>

@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
   def redirect_unless_logged_current
     unless logged_in? && @user == current_user
       flash[:error] = "You must be logged in to access this section"
-      redirect_to home_path 
+      redirect_to home_path
+    end 
   end
 
   def require_login

@@ -1,4 +1,7 @@
 <h1> Log In </h1>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 <br>
 <%= form_for(@user) do |f| %>
 Email: <%= f.text_field :email %>

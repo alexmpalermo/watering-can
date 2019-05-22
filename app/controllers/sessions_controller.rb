@@ -20,7 +20,8 @@ class SessionsController < ApplicationController
         log_in(user)
         redirect_to home_path
       else
-        render '/login'
+        flash[:error] = "Invalid email or password."
+        return redirect_to login_path
       end
     end
   end
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
   def destroy
       require_login
       session.delete(:user_id)
-      flash[:notice] = "You have successfully logged out."
+      flash[:success] = "You have successfully logged out."
       redirect_to home_path
   end
 end

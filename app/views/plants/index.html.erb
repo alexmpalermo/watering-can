@@ -1,4 +1,7 @@
 <h1><%= @dispenser.name %></h1>
+<% if flash[:success] %>
+  <div class="success"><%= flash[:success] %></div>
+<% end %>
 
 <p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
 

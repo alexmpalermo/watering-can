@@ -1,4 +1,7 @@
 <h1>Add a New Plant</h1>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
 <br>
 <%= form_for @plant, url: dispenser_plants_path(@dispenser) do |f| %>
 Name: <%= f.text_field :name %>
