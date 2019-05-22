@@ -41,10 +41,11 @@ class UsersController < ApplicationController
         flash[:error] = "One or more of your Watering Cans do not have plants assigned to them yet. Please add plants or delete the unused dispenser by visiting My Watering Cans."
         return redirect_to user_path(@user)
       end
+      @vaca = params[:watering][:vacation_days]
       @user.dispensers.each do |disp|
-        Plant.vacation_start(disp.id, params[:watering][:vacation_days])
+        Plant.vacation_start(disp.id, @vaca)
         @container = Container.create(:dispenser_id => disp.id, :date => Date.current, :start_amount => 0)
-        @end_day = (Date.current + params[:watering][:vacation_days])
+        @end_day = (Date.current + @vaca.to_i)
         Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => params[:watering][:vacation_days], :date => Date.current, :start_vacation => Date.current)
       end
     end

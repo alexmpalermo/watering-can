@@ -11,7 +11,7 @@ class Plant < ApplicationRecord
   end
 
   def check_water(vacation)
-    if (vacation + Date.current) > self.next_water_day
+    if (Date.current + vacation.to_i) > self.next_water_day.to_date
       self.update(:needs_water => 'true')
     else
       self.update(:needs_water => 'false')
@@ -22,8 +22,8 @@ class Plant < ApplicationRecord
     @plants = []
     @plants << Plant.all.find_by(:dispenser_id => pd)
     @plants.each do |plant|
-      d = (Date.current + plant.water_frequency)
-      plant.update(:last_day_watered => Date.current, :next_water_day => d)
+      @next = (Date.current + plant.water_frequency)
+      plant.update(:last_day_watered => Date.current, :next_water_day => @next)
       plant.check_water(pv)
     end
   end
