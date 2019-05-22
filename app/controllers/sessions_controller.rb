@@ -27,16 +27,13 @@ class SessionsController < ApplicationController
         redirect_to home_path
       else
         render '/login'
-      end 
+      end
     end
   end
 
   def destroy
-    if logged_in?
-      session.delete :user_id
+      redirect_to home_path unless logged_in?
+      session.delete(:user_id)
       redirect_to home_path
-    else
-      return redirect_to home_path
-    end
   end
 end
