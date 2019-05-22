@@ -2,6 +2,8 @@
 
 <p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
 
+<p><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></p>
+
 <% @dispenser.plants.each do |plant| %>
 <ol>
   <li><%= link_to(plant.name, edit_dispenser_plant_path(@dispenser, plant)) %>, <%= plant.location %></li>
