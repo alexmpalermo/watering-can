@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
   def home
+    if logged_in?
+      @user = current_user
+      redirect_to user_path(@user)
+    end
   end
 
   def signup
-    @user = User.new
+    if logged_in?
+      @user = current_user
+      redirect_to user_path(@user)
+    else
+      @user = User.new
+    end 
   end
 
   def create
