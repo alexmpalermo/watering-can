@@ -29,7 +29,11 @@ class DispensersController < ApplicationController
   end
 
   def destroy
+    @dispenser = Dispenser.find_by_id(params[:id])
+    @dispenser.destroy
+    redirect_to dispensers_path 
   end
+
 
   private
 

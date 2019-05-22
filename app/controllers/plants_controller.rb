@@ -32,6 +32,10 @@ class PlantsController < ApplicationController
   end
 
   def destroy
+    @dispenser = Dispenser.find_by_id(params[:dispenser_id])
+    @plant = Plant.find_by_id(params[:id])
+    @plant.destroy
+    redirect_to dispenser_plants_path(@dispenser) 
   end
 
   private
