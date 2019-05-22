@@ -1,6 +1,6 @@
 class DispensersController < ApplicationController
   def index
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
   end
 
   def new
@@ -8,7 +8,7 @@ class DispensersController < ApplicationController
   end
 
   def create
-    @user = User.find_by_id(session[:user_id])
+    @user = current_user
     @dispenser = Dispenser.new(dispenser_params)
     @dispenser.user = @user
     if @dispenser.save

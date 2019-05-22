@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   def login
     if logged_in?
-      @user = User.find_by_id(session[:user_id])
+      @user = current_user
       redirect_to user_path(@user)
     else
-      @user = User.new 
+      @user = User.new
     end
   end
 
