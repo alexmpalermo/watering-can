@@ -4,3 +4,9 @@
 <%= f.text_field :name, placeholder: @dispenser.name %>
 <%= f.submit "Rename Dispenser" %>
 <% end %>
+<br><br>
+<p>or</p>
+<br><br>
+<%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :delete) do |f| %>
+<%= f.submit "Delete this watering can" %>
+<% end %>

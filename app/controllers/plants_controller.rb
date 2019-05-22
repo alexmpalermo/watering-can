@@ -1,6 +1,11 @@
 class PlantsController < ApplicationController
   def index
-    @dispenser = Dispenser.find_by_id(params[:dispenser_id])
+    if @dispenser = Dispenser.find_by_id(params[:dispenser_id])
+      @user = User.find_by_id(@dispenser.user_id)
+      redirect_to home_path unless logged_in? && @user = current_user
+    else
+      redirect_to home_path
+    end 
   end
 
   def new
@@ -35,7 +40,7 @@ class PlantsController < ApplicationController
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.find_by_id(params[:id])
     @plant.destroy
-    redirect_to dispenser_plants_path(@dispenser) 
+    redirect_to dispenser_plants_path(@dispenser)
   end
 
   private
