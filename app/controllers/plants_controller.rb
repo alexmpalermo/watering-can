@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
   def index
     if @dispenser = Dispenser.find_by_id(params[:dispenser_id])
       @user = User.find_by_id(@dispenser.user_id)
-      redirect_to home_path unless logged_in? && @user == current_user
+      redirect_unless_logged_current
     else
       redirect_to home_path
     end

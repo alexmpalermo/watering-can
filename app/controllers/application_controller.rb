@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
       @user = current_user
       redirect_to user_path(@user)
     end
-  end 
+  end
+
+  def redirect_unless_logged_current
+    redirect_to home_path unless logged_in? && @user == current_user
+  end
 end

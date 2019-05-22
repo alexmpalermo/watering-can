@@ -14,14 +14,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to user_path(@user) 
+      redirect_to user_path(@user)
     end
   end
 
   def show
     if @user = User.find_by_id(params[:id])
       @watering = Watering.new
-      redirect_to home_path unless logged_in? && @user == current_user
+      redirect_unless_logged_current
     else
      redirect_to home_path
     end
