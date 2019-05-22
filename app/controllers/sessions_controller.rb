@@ -1,18 +1,12 @@
 class SessionsController < ApplicationController
   def login
-    if logged_in?
-      @user = current_user
-      redirect_to user_path(@user)
-    else
-      @user = User.new
-    end
+    logged_in_or_redirect
+    @user = User.new
   end
 
   def create
-    if logged_in?
-      @user = current_user
-      redirect_to user_path(@user)
-    elsif !logged_in? && access_token = request.env["omniauth.auth"]
+    logged_in_or_redirect
+    if access_token = request.env["omniauth.auth"]
       user = User.from_omniauth(access_token)
       log_in(user)
       user.google_token = access_token.credentials.token

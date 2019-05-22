@@ -9,5 +9,11 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find_by_id(session[:user_id])
   end
-  
+
+  def logged_in_or_redirect
+    if logged_in?
+      @user = current_user
+      redirect_to user_path(@user)
+    end
+  end 
 end

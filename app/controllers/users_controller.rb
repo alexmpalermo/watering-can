@@ -1,26 +1,20 @@
 class UsersController < ApplicationController
   def home
-    if logged_in?
-      @user = current_user
-      redirect_to user_path(@user)
-    end
+    logged_in_or_redirect
   end
 
   def signup
-    if logged_in?
-      @user = current_user
-      redirect_to user_path(@user)
-    else
-      @user = User.new
-    end 
+    logged_in_or_redirect
+    @user = User.new
   end
 
   def create
+    logged_in_or_redirect
     return redirect_to new_user_path unless params[:user][:password] == params[:user][:password_confirmation]
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to user_path(@user)
+      redirect_to user_path(@user) 
     end
   end
 
