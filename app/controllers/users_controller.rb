@@ -16,11 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    if !logged_in? || @user != current_user
+    if @user = User.find_by_id(params[:id])
+      @watering = Watering.new
+      redirect_to home_path unless logged_in? && @user = current_user
+    else
      redirect_to home_path
     end
-    @watering = Watering.new 
   end
 
   def update
