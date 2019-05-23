@@ -14,10 +14,10 @@ class Watering < ApplicationRecord
   end
 
   def self.water(disp_id)
+    if @plants = Plant.water_today.where(:dispenser_id => disp_id)
     @dispenser = Dispenser.find_by_id(disp_id)
     @container = @dispenser.containers.last
     @last = @container.waterings.last
-    @plants = Plant.water_today.where(:dispenser_id => @dispenser.id)
     @plants.each do |plant|
       @watering = Watering.new(:plant_id => plant.id, :date => Date.current, :container_id => @container.id, :end_vacation => @last.end_vacation, :start_vacation => @last.start_vacation, :leftover => 0)
       @watering.vacation_days = (@watering.end_vacation - Date.current)
@@ -30,14 +30,29 @@ class Watering < ApplicationRecord
           @c_new = Container.refill(@disp)
           @new_leftover = (@c_new.start_amount + @watering.leftover)
           Watering.create(:plant_id => plant.id, :container_id => @c_new.id, :vacation_days => @watering.vacation_days, :start_vacation => @watering.start_vacation, :end_vacation => @watering.end_vacation, :date => @watering.date, :leftover => @new_leftover)
+
         end
         @last_plant_water = plant.waterings.last
         plant.check_water(@last_plant_water.vacation_days)
+      end
+    else
+      if Plant.vacation_over?(disp_id)
+      else
+        @tomorrow = (Date.current + 1) 
+        self.water(disp_id)
       end
     end
   end
 
   def self.water_my_plants(disp_id)
     self.water(disp_id) until !Plant.water_soon.where(:dispenser_id => disp_id)
+  end
+
+  def self.vacation_over?(disp_id)
+    if self.water_soon.where(:dispenser_id => disp_id)
+      true
+    else
+      false
+    end
   end
 end
