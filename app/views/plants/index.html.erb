@@ -7,8 +7,20 @@
 
 <p><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></p>
 
-<% @dispenser.plants.each do |plant| %>
 <ol>
-  <li><%= link_to(plant.name, edit_dispenser_plant_path(@dispenser, plant)) %>, <%= plant.location %></li>
+<% @dispenser.plants.each do |plant| %>
+
+  <li><%= link_to(plant.name, dispenser_plant_path(@dispenser, plant)), <%= plant.location %></li>
+    <ul>
+      <li>Next water day: <%= plant.next_water_day %>, Last day watered: <%= plant.last_day_watered %></li>
+      <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
+    </ul>
+<% end %>
 </ol>
+
+<% disp.plants.each do |plant| %>
+<p><%= plant.name %>, <%= plant.location %>: </p>
+<br>
+<p></p>
+<br><br>
 <% end %>

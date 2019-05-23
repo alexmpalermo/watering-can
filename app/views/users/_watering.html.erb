@@ -7,10 +7,4 @@
 
 <% @user.dispensers.each do |disp| %>
 <% Watering.water_loop(disp.id) %>
-<% disp.plants.each do |plant| %>
-<p><%= plant.name %>, <%= plant.location %>: </p>
-<br>
-<p>Last day watered- <%= plant.last_day_watered %>, Next water day- <%= plant.next_water_day %></p>
-<br><br>
-<% end %>
 <% end %>
