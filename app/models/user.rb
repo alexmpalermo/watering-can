@@ -13,6 +13,10 @@ class User < ApplicationRecord
     end
   end
 
-  
+  def start_loop
+    self.dispensers.each do |disp|
+      Watering.water_loop(disp.id)
+    end
+  end
 
 end
