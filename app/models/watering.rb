@@ -14,7 +14,8 @@ class Watering < ApplicationRecord
   end
 
   def self.water(disp_id)
-    if @plants = Plant.water_today.where(:dispenser_id => disp_id)
+    @plants = []
+    if @plants << Plant.water_today.where(:dispenser_id => disp_id)
       @dispenser = Dispenser.find_by_id(disp_id)
       @container = @dispenser.containers.last
       @last = @container.waterings.last
@@ -32,7 +33,7 @@ class Watering < ApplicationRecord
         else
           plant.check_water(@watering.vacation_days)
         end
-      end 
+      end
     end
   end
 
@@ -41,17 +42,17 @@ class Watering < ApplicationRecord
   end
 
   def self.vacation_over?(disp_id)
-    if self.water_soon.where(:dispenser_id => disp_id)
-      true
-    else
+    if Plant.water_soon.where(:dispenser_id => disp_id)
       false
+    else
+      true
     end
   end
 
   def self.water_loop(disp_id)
     loop do
       self.water(disp_id)
-      sleep(1.day)
+      sleep(1.day) # ---- in background?
       break if self.vacation_over?(disp_id)
     end
   end
