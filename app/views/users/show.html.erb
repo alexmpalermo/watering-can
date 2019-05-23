@@ -17,13 +17,10 @@
 <p><%= link_to('My Watering Cans', dispensers_path) %></p>
 
 
+<% if Date.current <= @user.vacation_calculate %>
+<h3>Vacation Days Left: <%=  @user.vacation_calculate %></h3>
+<% end %>
 
-<% @last_container = @user.dispensers.first.containers.last %>
-<% @last_watering = @last_container.waterings.last %>
-<% if @last_watering.end_vacation > Date.current %>
-<h3>Vacation Days Left: <%= @last_watering.end_vacation - Date.current %></h3>
-<% end %>
-<% end %>
 
 
 
