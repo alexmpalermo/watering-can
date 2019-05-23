@@ -12,8 +12,10 @@
 
   <li><%= link_to(plant.name, dispenser_plant_path(@dispenser, plant)), <%= plant.location %></li>
     <ul>
-      <li>Next water day: <%= plant.next_water_day %>, Last day watered: <%= plant.last_day_watered %></li>
       <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
+      <% unless plant.next_water_day.blank? && plant.last_day_watered.blank? %>
+      <li>Next water day: <%= plant.next_water_day %>, Last day watered: <%= plant.last_day_watered %></li>
+      <% end %>
     </ul>
 <% end %>
 </ol>
