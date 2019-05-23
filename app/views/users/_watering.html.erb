@@ -1,10 +1,3 @@
-<% @last_container = @user.dispensers.first.containers.last %>
-<% @last_watering = @last_container.waterings.last %>
-<% if @last_watering.end_vacation > Date.current %>
-<h3>Vacation Days Left: <%= @last_watering.end_vacation - Date.current %></h3>
-<% end %>
-<% end %>
-
 <% @user.dispensers.each do |disp| %>
 <% Watering.water_loop(disp.id) %>
 <% end %>
