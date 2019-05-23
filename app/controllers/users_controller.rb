@@ -46,10 +46,13 @@ class UsersController < ApplicationController
         Plant.vacation_start(disp.id, @vaca)
         @container = Container.create(:dispenser_id => disp.id, :date => Date.current, :start_amount => 0)
         @end_day = (Date.current + @vaca.to_i)
-        if @watering = Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => @vaca.to_i, :date => Date.current, :start_vacation => Date.current)
+        if @watering = Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => @vaca.to_i, :date => Date.current, :start_vacation => Date.current, :plant_id => disp.plants.first.id)
           flash[:success] = "Vacation time has been successfully updated."
           return redirect_to user_path(@user)
-        end 
+        else
+          flash[:error] = "Vacation days must be greater than zero."
+          return redirect_to user_path(@user)
+        end
       end
     end
   end
