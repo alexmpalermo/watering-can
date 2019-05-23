@@ -1,3 +1,5 @@
 
+<% @user.dispensers.each do |disp| %>
 
-<% Watering.water_my_plants(disp.id) %>
+
+<% Watering.water_loop(disp.id) %>
