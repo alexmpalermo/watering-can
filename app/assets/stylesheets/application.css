@@ -174,6 +174,8 @@ body.flash-active {
 }
 
 .hamburger-thing {
+  color: #2d2a24;
+  cursor: pointer;
   display: block;
   left: 5px;
   position: absolute;
@@ -183,39 +185,33 @@ body.flash-active {
 }
 
 .burger-line {
-  width: 35px;
-  height: 5px;
+  width: 25px;
+  height: 4px;
   background-color: black;
   margin: 6px 0;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+.nav-list {
+    display: none;
+    opacity: 1;
+    top: 0;
+    transition: top .3s ease-in-out,opacity .2s ease-in-out;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+.nav-list-item {
+    margin: 0 12px;
+    font-family: Domaine-Regular,helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+.nav-list-item a {
+    color: #2d2a24;
+    overflow-x: hidden;
+    padding-bottom: 2px;
+    position: relative;
+    width: auto;
 }
 
 
