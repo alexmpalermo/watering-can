@@ -16,6 +16,26 @@
 
 /* ///////////// MAIN LAYOUTS //////////// */
 
+body {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 26px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1440px;
+  overflow-x: hidden;
+  transition: margin .3s cubic-bezier(.23,1,.32,1);
+  width: 100%;
+}
+
+body.flash-active {
+  margin: 56px auto 0;
+}
+
 .site-wrapper--padding {
   padding: 0 32px;
 }

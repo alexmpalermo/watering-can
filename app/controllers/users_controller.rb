@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     logged_in_or_redirect
     if params[:user][:password] != params[:user][:password_confirmation]
       flash[:error] = "Password must match Password Confirmation."
-      return redirect_to new_user_path
+      redirect_to signup_path
     end
     @user = User.new(user_params)
     if @user.save
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:error] = "All fields must be filled in. Email cannot be one that is already used"
-      return redirect_to new_user_path
+      redirect_to signup_path
     end
   end
 
