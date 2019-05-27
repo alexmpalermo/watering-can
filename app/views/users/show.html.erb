@@ -20,7 +20,19 @@
   <% end %>
 
     <div class="flex-container col--v-center">
-      <div class="col--start col hamburger-thing">hamburger thing</div>
+      <div class="col--start col">
+        <div class="hamburger-thing">
+          <button>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+          </button>
+        </div>
+          <div class="dropdown-content">
+            <%= link_to('My Watering Cans', dispensers_path) %>
+            <%= link_to('Register a New Watering Can', new_dispenser_path) %>
+          </div>
+      </div>
       <div class="col logo_container logo-font">
         <%= link_to("Watering Can", home_path) %>
       </div>
@@ -32,13 +44,8 @@
 
 <h1>Welcome, <%= @user.name %></h1>
 
+<br><br>
 
-
-  <br><br>
-
-  <%= link_to('My Watering Cans', dispensers_path) %>
-  <%= link_to('Register a New Watering Can', new_dispenser_path) %>
-  <br><br>
 
   <% if Date.current <= @user.vacation_calculate %>
     <h3>Vacation Days Left: <%=  @user.vacation_calculate %></h3>
