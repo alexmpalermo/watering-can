@@ -55,6 +55,13 @@ body.flash-active {
   text-align: center;
 }
 
+.col--v-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
 .col--full {
   -ms-flex-positive: 1;
   -webkit-box-flex: 1;
@@ -71,6 +78,7 @@ body.flash-active {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  flex: 0 1 auto;
 }
 
 .flash-bar {
@@ -107,7 +115,22 @@ body.flash-active {
 }
 
 
-/* ///////////// LINKS //////////////// */
+/* ///////////// NAVBAR //////////////// */
+
+.nav {
+    background: 0 0;
+    position: fixed;
+    height: 56px;
+    max-width: 1440px;
+    width: 100%;
+    top: 0;
+    transition: all .4s cubic-bezier(.23,1,.32,1);
+    z-index: 1000;
+}
+
+.nav.flash-active {
+  top: 56px;
+}
 
 /* ///////////// HEADER //////////////// */
 

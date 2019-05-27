@@ -1,12 +1,12 @@
 <h1>Welcome to Watering Can!</h1>
 
 <% if flash[:error] %>
-  <div class="error flash-bar flex-container col site-wrapper--padding">
+  <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
   </div>
 <% end %>
 <% if flash[:success] %>
-  <div class="success flash-bar flex-container col site-wrapper--padding">
+  <div class="success flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
   </div>
 <% end %>
