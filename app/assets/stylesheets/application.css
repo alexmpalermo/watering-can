@@ -71,6 +71,20 @@ body.flash-active {
   max-width: 100%;
 }
 
+.col--start {
+  -ms-flex-pack: start;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.col--end {
+  -ms-flex-pack: end;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  text-align: end;
+}
+
 /* ///////////// FLASH MESSAGES ////////// */
 
 .flex-container {
@@ -132,6 +146,43 @@ body.flash-active {
   top: 56px;
 }
 
+.logo-container {
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    text-align: center;
+}
+
+.logo-font {
+  font-family: somecoolfont;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 26px;
+  margin: 0;
+}
+
+.nav-end-link {
+  text-align: center;
+  font-family: Domaine-Regular,helvetica,sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+  margin: 0;
+}
+
+.hamburger-thing {
+  display: block;
+  left: 5px;
+  position: absolute;
+  top: 14px;
+  transition: color .4s ease-in-out;
+  z-index: 200;
+}
+
+
 /* ///////////// HEADER //////////////// */
 
 /* ///////////// BACKGROUNDS ////////////// */
@@ -140,6 +191,11 @@ body.flash-active {
 
 /* ///////////// BOX SIZING //////////////// */
 
-/* ///////////// BUTTONS //////////////// */
+/* ///////////// BUTTONS/links //////////////// */
+
+a:link, a:visited, a:active {
+  text-decoration: none;
+  color: black;
+}
 
 /* ///////////// FOOTER //////////////// */

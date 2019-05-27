@@ -4,30 +4,38 @@
   <nav class="nav site-wrapper--padding">
 <% end %>
 
-<% if flash[:notice] %>
-  <div class="notice flash-bar col flex-container site-wrapper--padding">
-    <p class="flash-type col col--full col--center"><%= flash[:notice] %></p>
-  </div>
-  <%= render partial: "watering", locals: { user: @user } %>
-<% elsif flash[:error] %>
-  <div class="error flash-bar col flex-container site-wrapper--padding">
-    <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
-  </div>
-<% elsif flash[:success] %>
-  <div class="success flash-bar col flex-container site-wrapper--padding">
-    <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
-  </div>
-<% end %>
+  <% if flash[:notice] %>
+    <div class="notice flash-bar col flex-container site-wrapper--padding">
+      <p class="flash-type col col--full col--center"><%= flash[:notice] %></p>
+    </div>
+    <%= render partial: "watering", locals: { user: @user } %>
+  <% elsif flash[:error] %>
+    <div class="error flash-bar col flex-container site-wrapper--padding">
+      <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
+    </div>
+  <% elsif flash[:success] %>
+    <div class="success flash-bar col flex-container site-wrapper--padding">
+      <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
+    </div>
+  <% end %>
 
-
-
+    <div class="flex-container col--v-center">
+      <div class="col--start col hamburger-thing">hamburger thing</div>
+      <div class="col logo_container logo-font">
+        <%= link_to("Watering Can", home_path) %>
+      </div>
+      <div class="col flex-container col--end nav-end-link">
+        <%= link_to('Log Out', logout_path) %>
+      </div>
+    </div>
+  </nav>
 
 <h1>Welcome, <%= @user.name %></h1>
 
 
 
   <br><br>
-  <%= link_to('Log Out', logout_path) %>
+
   <%= link_to('My Watering Cans', dispensers_path) %>
   <%= link_to('Register a New Watering Can', new_dispenser_path) %>
   <br><br>
