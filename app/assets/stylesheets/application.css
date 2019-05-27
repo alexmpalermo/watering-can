@@ -191,8 +191,7 @@ body.flash-active {
 
 .dropbtn {
   border: none;
-  background-color: white;
-  padding: 2px;
+  padding: 6px, 0;
 
 }
 
