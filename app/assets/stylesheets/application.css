@@ -17,7 +17,31 @@
 /* ///////////// MAIN LAYOUTS //////////// */
 
 .site-wrapper--padding {
-    padding: 0 32px;
+  padding: 0 32px;
+}
+
+.col {
+  box-sizing: border-box;
+  -ms-flex: 0 0 auto;
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.col--center {
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.col--full {
+  -ms-flex-positive: 1;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
 }
 
 /* ///////////// FLASH MESSAGES ////////// */
@@ -27,7 +51,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .flash-bar {
@@ -48,11 +71,19 @@
 }
 
 .error {
-  background-color: #007b5f
+  background-color: #ff0d0d
 }
 
 .notice {
   background-color: #007b5f
+}
+
+.flash-font {
+  font-family: Domaine-Regular,helvetica,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  margin: 0;
 }
 
 
