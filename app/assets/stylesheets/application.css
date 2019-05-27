@@ -74,6 +74,15 @@ body.flash-active {
 .col--full {
   -ms-flex-positive: 1;
   -webkit-box-flex: 1;
+  flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.col--full2 {
+  -ms-flex-positive: 1;
+  -webkit-box-flex: 1;
   flex-grow: 6;
   -ms-flex-preferred-size: 0;
   flex-basis: 0;

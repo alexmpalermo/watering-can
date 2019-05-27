@@ -30,6 +30,6 @@ class SessionsController < ApplicationController
       require_login
       session.delete(:user_id)
       flash[:success] = "You have successfully logged out."
-      redirect_to home_path
+      return redirect_to home_path
   end
 end
