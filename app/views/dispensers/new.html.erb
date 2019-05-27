@@ -1,9 +1,11 @@
-<h1>Register a New Can</h1>
+<div class="background newdispb">
+
 <% if flash[:error] %>
   <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
   </div>
 <% end %>
+<h1>Register a New Can</h1>
 <br>
 <%= form_for @dispenser, url: dispensers_path do |f| %>
 Name: <%= f.text_field :name %>
@@ -11,3 +13,4 @@ Product Number: <%= f.text_field :product_number %>
 Capacity (oz): <%= f.select :capacity, ['24', '36', '48'] %>
 <%= f.submit "Register" %>
 <% end %>
+</div>

@@ -1,10 +1,11 @@
-<h1><%= @dispenser.name %></h1>
+<div class="background plantindexb">
+
 <% if flash[:success] %>
   <div class="success flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
   </div>
 <% end %>
-
+<h1><%= @dispenser.name %></h1>
 <p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
 
 <p><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></p>
@@ -21,3 +22,4 @@
     </ul>
 <% end %>
 </ol>
+</div>

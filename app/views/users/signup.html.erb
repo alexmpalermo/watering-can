@@ -1,3 +1,4 @@
+<div class="background signupb">
 <% if flash[:error] %>
   <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
@@ -13,3 +14,4 @@ Password: <%= f.password_field :password %>
 Password Confirmation: <%= f.password_field :password_confirmation %>
 <%= f.submit "Submit" %>
 <% end %>
+</div>

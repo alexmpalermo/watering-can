@@ -1,9 +1,11 @@
-<h1>Edit This Plant</h1>
+<div class="background editplantb">
+
 <% if flash[:error] %>
   <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
   </div>
 <% end %>
+<h1>Edit This Plant</h1>
 <br>
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :patch) do |f| %>
 Name: <%= f.text_field :name, placeholder: @plant.name %>
@@ -19,3 +21,4 @@ Water Frequency (days): <%= f.select :water_frequency, ['1', '2', '3', '4', '5',
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :delete) do |f| %>
 <%= f.submit "Delete this plant" %>
 <% end %>
+</div>

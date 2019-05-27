@@ -1,9 +1,11 @@
-<h1> Log In </h1>
+<div class="background loginb">
 <% if flash[:error] %>
   <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
   </div>
 <% end %>
+
+<h1> Log In </h1>
 <br>
 <%= form_for(@user) do |f| %>
 Email: <%= f.text_field :email %>
@@ -16,3 +18,4 @@ Password: <%= f.password_field :password %>
 <br>
 <br>
 <p><%= link_to('Login with Google', '/auth/google_oauth2') %></p>
+</div>

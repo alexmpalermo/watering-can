@@ -235,7 +235,43 @@ body.flash-active {
   height: 100%;
 }
 
-.usershow {
+.usershowb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.homeb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.signupb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.loginb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.newplantb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.editplantb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.plantindexb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.newdispb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.editdispb {
+  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+}
+
+.dispindexb {
   background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
 }
 

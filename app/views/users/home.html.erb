@@ -1,5 +1,4 @@
-<h1>Welcome to Watering Can!</h1>
-
+<div class="background homeb">
 <% if flash[:error] %>
   <div class="error flash-bar col flex-container site-wrapper--padding">
     <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
@@ -11,6 +10,8 @@
   </div>
 <% end %>
 
+<h1>Welcome to Watering Can!</h1>
+
 <h3><%= link_to('Sign Up', signup_path) %></h3>
 
 <h3><%= link_to('Log In', login_path) %></h3>
@@ -18,3 +19,4 @@
 <p>or</p>
 <br><br>
 <p><%= link_to('Login with Google', '/auth/google_oauth2') %></p>
+</div>
