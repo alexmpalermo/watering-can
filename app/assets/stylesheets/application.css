@@ -30,29 +30,29 @@
   box-sizing: border-box;
 }
 
+.flash-bar {
+  color: #fff;
+  position: absolute;
+  height: 56px;
+  left: 0;
+  max-width: 1440px;
+  right: 0;
+  top: -56px;
+  transition: all .3s cubic-bezier(.23,1,.32,1);
+  width: 100%;
+  z-index: 900;
+}
+
 .success {
   background-color: #007b5f
-  background: #007b5f;
-    color: #fff;
-    position: absolute;
-    height: 56px;
-    left: 0;
-    max-width: 1440px;
-    right: 0;
-    top: -56px;
-    transition: all .3s cubic-bezier(.23,1,.32,1);
-    width: 100%;
-    z-index: 900;
 }
 
 .error {
-
-
+  background-color: #007b5f
 }
 
 .notice {
-
-
+  background-color: #007b5f
 }
 
 
