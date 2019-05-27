@@ -1,6 +1,8 @@
 <h1>Edit This Plant</h1>
 <% if flash[:error] %>
-  <div class="error"><%= flash[:error] %></div>
+  <div class="error flash-bar flex-container col site-wrapper--padding">
+    <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
+  </div>
 <% end %>
 <br>
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :patch) do |f| %>

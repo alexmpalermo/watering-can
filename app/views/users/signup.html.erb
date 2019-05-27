@@ -1,6 +1,8 @@
 <h1>Sign Up</h1>
 <% if flash[:error] %>
-  <div class="error"><%= flash[:error] %></div>
+  <div class="error flash-bar flex-container col site-wrapper--padding">
+    <p class="flash-type col col--full col--center"><%= flash[:error] %></p>
+  </div>
 <% end %>
 <br>
 <%= form_for(@user) do |f| %>

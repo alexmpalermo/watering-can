@@ -1,5 +1,7 @@
 <% if flash[:success] %>
-  <div class="success"><%= flash[:success] %></div>
+  <div class="success flash-bar flex-container col site-wrapper--padding">
+    <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
+  </div>
 <% end %>
 
 <% @user.dispensers.each do |disp| %>
