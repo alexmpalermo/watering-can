@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to user_path(@user)
     else
-      flash[:error] = "All fields must be filled in. Email cannot be one that is already used"
+      flash[:error] = "All fields must be filled in. Email cannot be one that is already used."
       redirect_to signup_path
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @watering = Watering.new
       redirect_unless_logged_current
     else
-      flash[:error] = "You must be logged in to access this section"
+      flash[:error] = "You must be logged in to access this section."
       redirect_to home_path
     end
   end
