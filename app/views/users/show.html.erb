@@ -20,22 +20,22 @@
   <% end %>
 
     <div class="flex-container col--v-center">
-      <div class="hamburger-thing">
-        <div class="burger-line"></div>
-        <div class="burger-line"></div>
-        <div class="burger-line"></div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+          <div class="burger-line"></div>
+        </button>
+        <div class="dropdown-content">
+          <%= link_to("My Watering Cans", dispensers_path) %>
+          <%= link_to("Register A New Can", new_dispenser_path) %>
+        </div>
       </div>
+
       <div class="col logo_container logo-font">
         <%= link_to("Watering Can", home_path) %>
       </div>
-      <ul class="flex-container col--center col nav-list">
-        <li class="nav-list-item">
-          <%= link_to('My Watering Cans', dispensers_path) %>
-        </li>
-        <li class="nav-list-item">
-          <%= link_to('Register a New Watering Can', new_dispenser_path) %>
-        </li>
-      </ul>
+
       <div class="col flex-container col--end nav-end-link">
         <%= link_to('Log Out', logout_path) %>
       </div>
