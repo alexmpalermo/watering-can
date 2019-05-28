@@ -37,7 +37,10 @@ class UsersController < ApplicationController
   def update
     if @user = User.find_by_id(params[:id])
       redirect_unless_logged_current
-      if @user.dispensers.detect {|disp| disp.plants.empty?}
+      if @user.dispensers.empty?
+        flash[:error] = "You must register at least one Watering Can."
+        return redirect_to user_path(@user)
+      elsif @user.dispensers.detect {|disp| disp.plants.empty?}
         flash[:error] = "One or more of your Watering Cans do not have plants assigned to them yet. Please add plants or delete the unused dispenser by visiting My Watering Cans."
         return redirect_to user_path(@user)
       end

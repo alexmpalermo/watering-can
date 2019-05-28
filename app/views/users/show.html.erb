@@ -6,12 +6,17 @@
 <h1>Welcome, <%= @user.name %></h1>
 
 <br>
-<% if !!@user.vaca_calc %>
-  <% if Date.current <= @user.vacation_calculate %>
-    <h3>Vacation Days Left: <%=  @user.vacation_calculate - Date.current %></h3>
+
+<% @user.dispensers.each do |d| %>
+<% d.containers.each do |c| %>
+  <% if !@user.dispensers.empty? && !d.containers.empty? && !c.waterings.empty? %>
+    <% if Date.current <= @user.vacation_calculate %>
+      <% @array = (@user.vacation_calculate - Date.current).to_s.split('/') %>
+      <h3>Vacation Days Left: <%= @array[0] %></h3>
+    <% end %>
   <% end %>
 <% end %>
-
+<% end %>
 
 <div class="yeseva">
   <%= form_for(@watering, url: user_path(@user), method: :patch) do |f| %>
