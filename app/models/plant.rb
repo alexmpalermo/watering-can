@@ -4,7 +4,12 @@ class Plant < ApplicationRecord
   has_many :containers, :through => :waterings
   validates :name, :location, :water_quantity, :water_frequency, presence: true
   scope :water_soon, -> {where(needs_water: 'true')}
-  scope :water_today, -> {water_soon.where('water_frequency <= days_left')}
+
+  def self.water_today
+    @need_w = self.all.select {|p| p.needs_water == "true"}
+    @todays = @need_w.select {|p| p.water_frequency >= p.days_left}
+    @todays
+  end
 
   def days_left
     Date.current - self.last_day_watered

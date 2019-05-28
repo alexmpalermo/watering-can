@@ -14,8 +14,7 @@ class Watering < ApplicationRecord
   end
 
   def self.water(disp_id)
-    @plants = []
-    if @plants << Plant.water_today.where(:dispenser_id => disp_id)
+    if @plants = Plant.water_today.select {|p| p.dispenser_id == disp_id}
       @dispenser = Dispenser.find_by_id(disp_id)
       @container = @dispenser.containers.last
       @last = @container.waterings.last
