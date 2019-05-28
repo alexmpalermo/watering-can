@@ -1,14 +1,19 @@
 <div class="background newplantb">
 <%= render partial: "navbar" %>
 
-<br><br>
+<br><br><br>
+<div class="center">
 <h1>Add a New Plant</h1>
-<br>
 <%= form_for @plant, url: dispenser_plants_path(@dispenser) do |f| %>
 Name: <%= f.text_field :name %>
+<br>
 Location: <%= f.text_field :location %>
+<br>
 Water Quantity (oz): <%= f.select :water_quantity, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36'] %>
+<br>
 Water Frequency (days): <%= f.select :water_frequency, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'] %>
+<br>
 <%= f.submit "Submit" %>
 <% end %>
+</div>
 </div>

@@ -1,20 +1,24 @@
 <div class="background editplantb">
 <%= render partial: "navbar" %>
-<br><br>
+<br><br><br>
+<div class="center">
 <h1>Edit This Plant</h1>
-<br>
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :patch) do |f| %>
 Name: <%= f.text_field :name, placeholder: @plant.name %>
+<br>
 Location: <%= f.text_field :location, placeholder: @plant.location %>
+<br>
 Water Quantity (oz): <%= f.select :water_quantity, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36'], placeholder: @plant.water_quantity %>
+<br>
 Water Frequency (days): <%= f.select :water_frequency, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'], placeholder: @plant.water_frequency %>
+<br>
 <%= f.submit "Submit" %>
 <% end %>
-<br>
-<br>
-<p>or</p>
-<br><br>
+
+<p class="bold">- or -</p>
+
 <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :delete) do |f| %>
 <%= f.submit "Delete this plant" %>
 <% end %>
+</div>
 </div>
