@@ -105,6 +105,14 @@ body.flash-active {
   text-align: end;
 }
 
+h1 {
+  font-family: 'Yeseva One', cursive;
+}
+
+.center {
+  text-align: center;
+}
+
 /* ///////////// FLASH MESSAGES ////////// */
 
 .flex-container {

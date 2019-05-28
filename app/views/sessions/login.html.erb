@@ -1,17 +1,16 @@
 <div class="background loginb">
 <%= render partial: "navbarlogin" %>
-<br><br>
-<h1> Log In </h1>
+<br><br><br>
+<h1 class="center"> Log In </h1>
 <br>
+<div class="center">
 <%= form_for(@user) do |f| %>
 Email: <%= f.text_field :email %>
 Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
 <% end %>
-<br>
-<br>
-<p>or</p>
-<br>
-<br>
-<p><%= link_to('Login with Google', '/auth/google_oauth2') %></p>
+</div>
+<p class="center">or</p>
+
+<p class="center"><%= link_to('Login with Google', '/auth/google_oauth2') %></p>
 </div>
