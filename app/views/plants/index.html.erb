@@ -1,10 +1,6 @@
 <div class="background plantindexb">
+<%= render partial: "navbar" %>
 
-<% if flash[:success] %>
-  <div class="success flash-bar col flex-container site-wrapper--padding">
-    <p class="flash-type col col--full col--center"><%= flash[:success] %></p>
-  </div>
-<% end %>
 <h1><%= @dispenser.name %></h1>
 <p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
 
