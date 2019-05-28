@@ -6,7 +6,7 @@
 <h1>Welcome, <%= @user.name %></h1>
 
 <br>
-<% if @user.if_vacation_calc == true %>
+<% if !!@user.vaca_calc %>
   <% if Date.current <= @user.vacation_calculate %>
     <h3>Vacation Days Left: <%=  @user.vacation_calculate - Date.current %></h3>
   <% end %>

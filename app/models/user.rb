@@ -36,19 +36,18 @@ class User < ApplicationRecord
     @last_watering.end_vacation.to_date
   end
 
-  def if_vacation_calc
-    if self.dispensers
-      self.dispensers.each do |disp|
-        if disp.containers
-          disp.containers.each do |c|
-            if c.waterings
-              true
-            else
-              false
-            end
-          end
+  def vaca_calc
+    if self.dispensers.each do |disp|
+      if disp.containers.each do |c|
+        if c.waterings
+          true
+        else
+          false
         end
       end
+      end
     end
+    end 
   end
+
 end
