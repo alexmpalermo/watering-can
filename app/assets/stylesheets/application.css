@@ -107,6 +107,7 @@ body.flash-active {
 
 h1 {
   font-family: 'Yeseva One', cursive;
+
 }
 
 .center {
@@ -125,6 +126,8 @@ h1 {
 .yeseva {
   font-family: 'Yeseva One', cursive;
 }
+
+
 
 /* ///////////// FLASH MESSAGES ////////// */
 
@@ -311,7 +314,21 @@ h1 {
 
 /* //////////////// FORMS /////////////// */
 
-/* ///////////// BOX SIZING //////////////// */
+/* ///////////// BOXes //////////////// */
+
+.shadow {
+  box-shadow: 0 3px 10px #333;
+}
+
+.section {
+  display: block;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  background: #f2f8f7;
+  width: 60%;
+}
 
 /* ///////////// BUTTONS/links //////////////// */
 
@@ -345,6 +362,12 @@ a:link.logo, a:visited.logo, a:active.logo {
 a:link.plantlink, a:visited.plantlink, a:active.plantlink {
   text-decoration: underline;
   font-weight: bold;
+}
+
+a:link.disp-font, a:visited.disp-font, a:active.disp-font {
+  color: #007b5f;
+  font-family: 'Yeseva One', cursive;
+  text-shadow: 1px 1px 1px #000000
 }
 
 /* ///////////// FOOTER //////////////// */

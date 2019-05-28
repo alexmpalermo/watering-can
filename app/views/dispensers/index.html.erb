@@ -2,19 +2,20 @@
 <%= render partial: "navbar" %>
 <br>
 <br>
+<br>
+<h1 class="center">My Watering Cans</h1>
+<br>
 <% @user.dispensers.each do |disp| %>
 
-
-<h1><%= link_to(disp.name, dispenser_plants_path(disp)) %></h1>
-
-
+<div class="section shadow">
+<h2><%= link_to disp.name, dispenser_plants_path(disp), :class => "disp-font" %></h2>
 
 <ol class="yeseva">
   <% disp.plants.each do |plant| %>
-  <li><%= link_to plant.name, edit_dispenser_plant_path(disp, plant), :class => "plantlink" %>, <%= plant.location %></li>
+  <li><%= link_to plant.name, edit_dispenser_plant_path(disp, plant), :class => "plantlink" %> - <%= plant.location %></li>
   <% end %>
-
 </ol>
+</div>
 <% end %>
 
 </div>
