@@ -3,14 +3,14 @@
 <br><br><br>
 <h1 class="center"> Log In </h1>
 <br>
-<div class="center">
+<div class="center yeseva">
 <%= form_for(@user) do |f| %>
 Email: <%= f.text_field :email %>
 Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
 <% end %>
 </div>
-<p class="center">or</p>
+<p class="center bold">- or -</p>
 
 <p class="center"><%= link_to image_tag("https://imgur.com/u98w3u2.jpeg"), '/auth/google_oauth2' %></p>
 </div>
