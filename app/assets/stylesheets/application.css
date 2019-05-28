@@ -127,6 +127,11 @@ h1 {
   font-family: 'Yeseva One', cursive;
 }
 
+.disp-font {
+  color: #007b5f;
+  font-family: 'Yeseva One', cursive;
+  text-shadow: 1px 1px 1px #000000
+}
 
 
 /* ///////////// FLASH MESSAGES ////////// */
@@ -327,7 +332,7 @@ h1 {
   margin-right: auto;
   margin-bottom: 30px;
   background: #f2f8f7;
-  width: 60%;
+  width: 70%;
 }
 
 /* ///////////// BUTTONS/links //////////////// */
@@ -355,6 +360,17 @@ a:link.logo, a:visited.logo, a:active.logo {
   height: 40px;
   border: 1px black;
   font-size: 20px;
+  font-family: 'Yeseva One', cursive;
+  margin: 8px;
+}
+
+.rename-add {
+  text-align: center;
+  background: radial-gradient(white, #007b5f);
+  width: 120px;
+  height: 30px;
+  border: 1px black;
+  font-size: 16px;
   font-family: 'Yeseva One', cursive;
   margin: 8px;
 }

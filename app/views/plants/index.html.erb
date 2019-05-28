@@ -1,15 +1,19 @@
 <div class="background plantindexb">
 <%= render partial: "navbar" %>
-<br><br>
+<br><br><br>
+<div class="center">
 <h1><%= @dispenser.name %></h1>
-<p><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></p>
 
-<p><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></p>
+<button class="rename-add"><%= link_to("Rename Can", edit_dispenser_path(@dispenser)) %></button>
 
+<button class="rename-add"><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></button>
+</div>
+<br>
+<div class="section shadow">
 <ol>
 <% @dispenser.plants.each do |plant| %>
 
-  <li><%= link_to(plant.name, edit_dispenser_plant_path(@dispenser, plant)) %>, <%= plant.location %></li>
+  <li><%= link_to plant.name, edit_dispenser_plant_path(@dispenser, plant), :class => "plantlink" %> - <%= plant.location %></li>
     <ul>
       <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
       <% unless plant.next_water_day.blank? && plant.last_day_watered.blank? %>
@@ -18,4 +22,5 @@
     </ul>
 <% end %>
 </ol>
+</div>
 </div>
