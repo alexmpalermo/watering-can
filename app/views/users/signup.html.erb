@@ -2,8 +2,9 @@
 <%= render partial: "navbarlogin" %>
 <br><br><br>
 <h1 class="center">Sign Up</h1>
-<div class="center">
+
 <br>
+<div class="center">
 <%= form_for(@user, url: signup_path) do |f| %>
 Name: <%= f.text_field :name %>
 <br>
