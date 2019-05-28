@@ -1,6 +1,6 @@
 <div class="background editdispb">
 <%= render partial: "navbar" %>
-
+<br><br>
 <h1>Rename This Dispenser</h1>
 <%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :patch) do |f| %>
 <%= f.text_field :name, placeholder: @dispenser.name %>

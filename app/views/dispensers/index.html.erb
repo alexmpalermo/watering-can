@@ -1,16 +1,20 @@
 <div class="background dispindexb">
 <%= render partial: "navbar" %>
-
+<br>
+<br>
 <% @user.dispensers.each do |disp| %>
 
 
 <h1><%= link_to(disp.name, dispenser_plants_path(disp)) %></h1>
 
 
-<% disp.plants.each do |plant| %>
+
 <ol>
+  <% disp.plants.each do |plant| %>
   <li><%= plant.name %>, <%= plant.location %></li>
+  <% end %>
+
 </ol>
 <% end %>
-<% end %>
+
 </div>

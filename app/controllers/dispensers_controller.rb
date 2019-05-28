@@ -6,6 +6,7 @@ class DispensersController < ApplicationController
   end
 
   def new
+    @user = current_user
     @dispenser = Dispenser.new
   end
 
@@ -23,6 +24,7 @@ class DispensersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @dispenser = Dispenser.find_by_id(params[:id])
   end
 

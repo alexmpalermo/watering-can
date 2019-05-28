@@ -11,6 +11,7 @@ class PlantsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @plant = Plant.new
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
   end
@@ -29,6 +30,7 @@ class PlantsController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.find_by_id(params[:id])
   end
