@@ -13,9 +13,20 @@ class User < ApplicationRecord
     end
   end
 
-  def start_loop
-    self.dispensers.each do |disp|
-      Watering.water_loop(disp.id)
+  def self.water_everyday
+    self.all.each do |user|
+      user.dispensers.each do |disp|
+        disp.plants.each do |plant|
+          if plant.waterings.last.end_vacation > plant.next_water_day.to_date
+            self.update(:needs_water => 'true')
+          else
+            self.update(:needs_water => 'false')
+          end
+          unless Watering.vacation_over?(disp.id)
+            Watering.water(disp.id)
+          end
+        end
+      end
     end
   end
 
@@ -24,5 +35,4 @@ class User < ApplicationRecord
     @last_watering = @last_container.waterings.last
     @last_watering.end_vacation.to_date - Date.current
   end
-
 end

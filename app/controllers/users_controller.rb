@@ -47,6 +47,7 @@ class UsersController < ApplicationController
         @container = Container.create(:dispenser_id => disp.id, :date => Date.current, :start_amount => 0)
         @end_day = (Date.current + @vaca.to_i)
         if @watering = Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => @vaca.to_i, :date => Date.current, :start_vacation => Date.current, :plant_id => disp.plants.first.id)
+          @today = Date.current 
           flash[:notice] = "Vacation time has been successfully updated."
           return redirect_to user_path(@user)
         else

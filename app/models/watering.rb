@@ -36,10 +36,6 @@ class Watering < ApplicationRecord
     end
   end
 
-  def self.water_my_plants(disp_id)
-    self.water(disp_id) until !Plant.water_soon.where(:dispenser_id => disp_id)
-  end
-
   def self.vacation_over?(disp_id)
     if Plant.water_soon.where(:dispenser_id => disp_id)
       false
@@ -48,11 +44,4 @@ class Watering < ApplicationRecord
     end
   end
 
-  def self.water_loop(disp_id)
-    loop do
-      self.water(disp_id)
-      sleep(1.day) # ---- in background?
-      break if self.vacation_over?(disp_id)
-    end
-  end
 end
