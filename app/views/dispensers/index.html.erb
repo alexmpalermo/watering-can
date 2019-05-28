@@ -11,7 +11,7 @@
 
 <ol>
   <% disp.plants.each do |plant| %>
-  <li><%= plant.name %>, <%= plant.location %></li>
+  <li><%= link_to(plant.name, edit_dispenser_plant_path(disp, plant)) %>, <%= plant.location %></li>
   <% end %>
 
 </ol>
