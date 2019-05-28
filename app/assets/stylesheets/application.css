@@ -113,6 +113,11 @@ h1 {
   text-align: center;
 }
 
+.bold {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 /* ///////////// FLASH MESSAGES ////////// */
 
 .flex-container {
@@ -316,6 +321,17 @@ a:link.logo, a:visited.logo, a:active.logo {
 		-2px 2px 0 #000,
 		2px 2px 0 #000;
 	color: white;
+}
+
+.signlog {
+  text-align: center;
+  background: radial-gradient(white, #007b5f);
+  width: 90px;
+  height: 40px;
+  border: 1px black;
+  font-size: 20px;
+  font-family: 'Yeseva One', cursive;
+  margin: 8px;
 }
 
 /* ///////////// FOOTER //////////////// */

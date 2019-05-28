@@ -1,13 +1,19 @@
 <div class="background signupb">
 <%= render partial: "navbarlogin" %>
-<br><br>
-<h1>Sign Up</h1>
-
+<br><br><br>
+<h1 class="center">Sign Up</h1>
+<div class="center">
+<br>
 <%= form_for(@user, url: signup_path) do |f| %>
 Name: <%= f.text_field :name %>
+<br>
 Email: <%= f.text_field :email %>
+<br>
 Password: <%= f.password_field :password %>
+<br>
 Password Confirmation: <%= f.password_field :password_confirmation %>
+<br>
 <%= f.submit "Submit" %>
 <% end %>
+</div>
 </div>

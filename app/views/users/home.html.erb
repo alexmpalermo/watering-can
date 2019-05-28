@@ -1,13 +1,13 @@
 <div class="background homeb">
 <%= render partial: "navbarlogin" %>
 <br><br><br><br>
-<h1>Welcome to Watering Can!</h1>
+<h1 class="center">Welcome to Watering Can!</h1>
 
-<h3><%= link_to('Sign Up', signup_path) %></h3>
+<div class="center">
+  <button class="signlog"><%= link_to('Sign Up', signup_path) %></button>
+  <button class="signlog"><%= link_to('Log In', login_path) %></button>
+</div>
+<p class="center bold">- or -</p>
+<p class="center"><%= link_to image_tag("https://imgur.com/u98w3u2.jpeg"), '/auth/google_oauth2' %></p>
 
-<h3><%= link_to('Log In', login_path) %></h3>
-<br><br>
-<p>or</p>
-<br><br>
-<p><%= link_to('Login with Google', '/auth/google_oauth2') %></p>
 </div>
