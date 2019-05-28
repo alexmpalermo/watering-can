@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css?family=Lobster|Yeseva+One');
+
 /* ///////////// MAIN LAYOUTS //////////// */
 html, body {
     height: 100%;
@@ -175,16 +177,18 @@ body.flash-active {
 
 .logo-font {
   font-family: somecoolfont;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: normal;
   line-height: 26px;
   margin: 0;
 }
 
+
+
 .nav-end-link {
   text-align: center;
   font-family: Domaine-Regular,helvetica,sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 24px;
   margin: 0;
@@ -212,7 +216,7 @@ body.flash-active {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: lightgrey;
+    background-color: #f2f8f7;
     z-index: 1;
     margin: 0 12px;
     height: auto;
@@ -228,9 +232,9 @@ body.flash-active {
 
 }
 
-.dropdown-content a:hover {background-color: grey;}
+.dropdown-content a:hover {background-color: #bfded7;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn {background-color: grey;}
+
 
 
 /* ///////////// BACKGROUNDS ////////////// */
@@ -293,6 +297,17 @@ body.flash-active {
 a:link, a:visited, a:active {
   text-decoration: none;
   color: black;
+}
+
+a:link.logo, a:visited.logo, a:active.logo {
+  font-family: 'Lobster', cursive;
+  margin: 0;
+  text-shadow:
+		-2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+	color: white;
 }
 
 /* ///////////// FOOTER //////////////// */
