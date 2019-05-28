@@ -8,7 +8,6 @@
     <div class="notice flash-bar col flex-container site-wrapper--padding">
       <p class="flash-type col col--full col--center"><%= flash[:notice] %></p>
     </div>
-    <%= render partial: "watering", locals: { user: @user } %>
   <% elsif flash[:error] %>
     <div class="error flash-bar col flex-container site-wrapper--padding">
       <p class="flash-type col col--full col--center"><%= flash[:error] %></p>

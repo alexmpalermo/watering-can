@@ -33,6 +33,22 @@ class User < ApplicationRecord
   def vacation_calculate
     @last_container = self.dispensers.first.containers.last
     @last_watering = @last_container.waterings.last
-    @last_watering.end_vacation.to_date - Date.current
+    @last_watering.end_vacation.to_date
+  end
+
+  def if_vacation_calc
+    if self.dispensers
+      self.dispensers.each do |disp|
+        if disp.containers
+          disp.containers.each do |c|
+            if c.waterings
+              true
+            else
+              false
+            end
+          end
+        end
+      end
+    end
   end
 end

@@ -375,6 +375,17 @@ a:link.logo, a:visited.logo, a:active.logo {
   margin: 8px;
 }
 
+.new-can {
+  text-align: center;
+  background: radial-gradient(white, #007b5f);
+  width: 300px;
+  height: 40px;
+  border: 1px black;
+  font-size: 16px;
+  font-family: 'Yeseva One', cursive;
+  margin: 8px;
+}
+
 a:link.plantlink, a:visited.plantlink, a:active.plantlink {
   text-decoration: underline;
   font-weight: bold;
