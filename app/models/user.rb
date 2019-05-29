@@ -15,39 +15,34 @@ class User < ApplicationRecord
 
   def self.water_everyday
     self.all.each do |user|
-      user.dispensers.each do |disp|
-        disp.plants.each do |plant|
-          if plant.waterings.last.end_vacation > plant.next_water_day.to_date
-            self.update(:needs_water => 'true')
-          else
-            self.update(:needs_water => 'false')
-          end
-          unless Watering.vacation_over?(disp.id)
-            Watering.water(disp.id)
+      if user.check_disp(user) && user.check_p(user)
+        user.dispensers.each do |disp|
+          disp.plants.each do |plant|
+            if plant.waterings.last.end_vacation.to_date > plant.next_water_day.to_date
+              plant.update(:needs_water => 'true')
+            else
+              plant.update(:needs_water => 'false')
+            end
+            Watering.water(disp.id) unless Watering.vacation_over?(disp.id)
           end
         end
       end
     end
+  end
+
+  def check_disp(user)
+    true unless user.dispensers.empty?
+  end
+
+  def check_p(user)
+    array = user.dispensers.select {|d| d.plants.empty?}
+    true if array.empty?
   end
 
   def vacation_calculate
-    @last_container = self.dispensers.first.containers.last
-    @last_watering = @last_container.waterings.last
+    @plant = self.dispensers.first.plants.first
+    @last_watering = @plant.waterings.last
     @last_watering.end_vacation.to_date
-  end
-
-  def vaca_calc
-    if self.dispensers.each do |disp|
-      if disp.containers.each do |c|
-        if c.waterings
-          true
-        else
-          false
-        end
-      end
-      end
-    end
-    end 
   end
 
 end

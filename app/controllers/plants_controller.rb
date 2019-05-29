@@ -21,6 +21,7 @@ class PlantsController < ApplicationController
     @plant = Plant.new(plant_params)
     @plant.dispenser = @dispenser
     if @plant.save
+      Watering.create(:plant_id => @plant.id, :container_id => @dispenser.containers.last.id, :vacation_days => 0, :start_vacation => (Date.current - 1), :end_vacation => (Date.current - 1), :date => Date.current, :leftover => 0)
       flash[:success] = "#{@plant.name} has been successfully created."
       redirect_to dispenser_plants_path(@dispenser)
     else

@@ -3,6 +3,9 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
+set :job_template, nil
+
+
 every 1.day, at: '9:00 am' do
   runner "User.water_everyday"
 end

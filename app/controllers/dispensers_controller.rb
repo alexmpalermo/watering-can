@@ -15,6 +15,7 @@ class DispensersController < ApplicationController
     @dispenser = Dispenser.new(dispenser_params)
     @dispenser.user = @user
     if @dispenser.save
+      Container.create(:dispenser_id => @dispenser.id, :date => Date.current, :start_amount => 0)
       flash[:success] = "#{@dispenser.name} has been successfully registered."
       redirect_to dispensers_path(@dispenser)
     else
