@@ -4,7 +4,7 @@
 <h1 class="center"> Log In </h1>
 <br>
 <div class="center yeseva">
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, url: login_path) do |f| %>
 Email: <%= f.text_field :email %>
 Password: <%= f.password_field :password %>
 <%= f.submit "Log In" %>
