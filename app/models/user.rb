@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :name, :email, :password, presence: true
   validates :email, uniqueness: true
 
+  @@greetings = []
 
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize do |user|
@@ -44,5 +45,10 @@ class User < ApplicationRecord
     @last_watering = @plant.waterings.last
     @last_watering.end_vacation.to_date
   end
+
+  def self.say_hi
+    print "hi"
+  end
+
 
 end

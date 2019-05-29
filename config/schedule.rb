@@ -2,14 +2,18 @@
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
-
+env :PATH, ENV['PATH']
+env :GEM_PATH, ENV['GEM_PATH']
 set :job_template, nil
 
 
 every 1.day, at: '9:00 am' do
-  runner "User.water_everyday"
+  rake 'watering_run:water'
 end
 
+#every 1.minutes do
+#  rake 'watering_run:water'
+#end
 
 # Example:
 #
