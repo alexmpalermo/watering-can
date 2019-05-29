@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       refresh_token = access_token.credentials.refresh_token
       user.google_refresh_token = refresh_token if refresh_token.present?
       user.save
+      log_in(user)
       redirect_to user_path(user)
     else
       user = User.find_by(:email => params[:user][:email])

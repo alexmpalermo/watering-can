@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       @watering = Watering.new
       redirect_unless_logged_current
     else
-      flash[:error] = "You must be logged in to access this section."
+      flash[:error] = "You must be signed up and logged in to access this section."
       redirect_to home_path
     end
   end

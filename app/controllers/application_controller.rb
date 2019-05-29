@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  include SessionsHelper
 
   def logged_in?
     !!session[:user_id]
+  end
+
+  def log_in(user)
+    session[:user_id] = user.id
   end
 
   def current_user
@@ -19,9 +22,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_logged_current
     unless logged_in? && @user == current_user
-      flash[:error] = "You must be logged in to access this section"
+      flash[:error] = "You must be signed up and logged in to access this section"
       redirect_to home_path
-    end 
+    end
   end
 
   def require_login
