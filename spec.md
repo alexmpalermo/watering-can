@@ -18,7 +18,7 @@ Specs:
     plants validates presence name, location, water q and f
     waterings validates vacation days can't be < 0
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-    Plant.water_soon used for Plant.water_today method and used in other methods
+    Plant.water_soon used in Watering.vacation_over?
 - [x] Include signup (how e.g. Devise)
     signup.html.erb with regular form or omniauth google, bcrypt
 - [x] Include login (how e.g. Devise)

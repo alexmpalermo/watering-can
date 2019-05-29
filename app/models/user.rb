@@ -46,9 +46,5 @@ class User < ApplicationRecord
     @last_watering.end_vacation.to_date
   end
 
-  def self.say_hi
-    print "hi"
-  end
-
 
 end
