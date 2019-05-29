@@ -20,7 +20,7 @@ class DispensersController < ApplicationController
       redirect_to dispensers_path(@dispenser)
     else
       flash[:error] = "All fields must be filled in. Product number must be one that hasn't been registered before."
-      redirect_to new_dispenser_path
+      render :new
     end
   end
 

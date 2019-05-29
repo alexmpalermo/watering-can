@@ -17,6 +17,7 @@ class PlantsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @dispenser = Dispenser.find_by_id(params[:dispenser_id])
     @plant = Plant.new(plant_params)
     @plant.dispenser = @dispenser
@@ -26,7 +27,7 @@ class PlantsController < ApplicationController
       redirect_to dispenser_plants_path(@dispenser)
     else
       flash[:error] = "All fields must be filled in."
-      redirect_to new_dispenser_plant_path(@dispenser)
+      render :new
     end
   end
 

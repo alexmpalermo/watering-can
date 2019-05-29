@@ -16,9 +16,9 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to user_path(user)
     else
-      user = User.find_by(:email => params[:user][:email])
-      if user && user.authenticate(params[:user][:password])
-        log_in(user)
+      @user = User.find_by(:email => params[:user][:email])
+      if @user && @user.authenticate(params[:user][:password])
+        log_in(@user)
         redirect_to home_path
       else
         flash[:error] = "Invalid email or password."
