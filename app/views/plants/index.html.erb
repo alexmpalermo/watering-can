@@ -17,7 +17,7 @@
     <ul>
       <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
       <% unless plant.next_water_day.blank? && plant.last_day_watered.blank? %>
-      <li>Next water day: <%= plant.next_water_day.to_date.strftime("%m/%d/%Y") %>, Last day watered: <%= plant.last_day_watered.to_date.strftime("%m/%d/%Y") %></li>
+      <li>Last day watered: <%= plant.last_day_watered.to_date.strftime("%m/%d/%Y") %>, Next water day: <%= plant.next_water_day.to_date.strftime("%m/%d/%Y") %></li>
       <% end %>
     </ul>
 <% end %>
