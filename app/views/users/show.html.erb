@@ -8,7 +8,7 @@
 <br>
 
 
-<% if !@user.dispensers.empty? %>
+<% if @user.check_disp && @user.check_p  %>
   <% if Date.current <= @user.vacation_calculate %>
     <% @array = (@user.vacation_calculate - Date.current).to_s.split('/') %>
     <h3>Vacation Days Left: <%= @array[0] %></h3>
