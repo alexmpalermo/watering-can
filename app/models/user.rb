@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   def self.water_everyday
     self.all.each do |user|
-      if user.check_disp && user.check_p
+      if user.check_disp? && user.check_p?
         user.dispensers.each do |disp|
           disp.plants.each do |plant|
             if plant.waterings.last.end_vacation.to_date > plant.next_water_day.to_date
@@ -31,11 +31,15 @@ class User < ApplicationRecord
     end
   end
 
-  def check_disp
-    true unless self.dispensers.empty?
+  def check_disp?
+    if self.dispensers.empty?
+      false
+    else
+      true
+    end
   end
 
-  def check_p
+  def check_p?
     array = self.dispensers.select {|d| d.plants.empty?}
     true if array.empty?
   end
