@@ -7,13 +7,13 @@ env :GEM_PATH, ENV['GEM_PATH']
 set :job_template, nil
 
 
-#every 1.day, at: '9:00 am' do
-#  rake 'watering_run:water'
-#end
-
-every 1.minutes do
+every 1.day, at: '9:00 am' do
   rake 'watering_run:water'
 end
+
+#every 1.minutes do
+#  rake 'watering_run:water'
+#end
 
 # Example:
 #

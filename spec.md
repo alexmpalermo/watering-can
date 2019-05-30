@@ -32,7 +32,7 @@ Specs:
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
     dispensers/1/plants/new
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
-    dispensers/1/plants/new
+    /signup
 
 Confirm:
 - [x] The application is pretty DRY
