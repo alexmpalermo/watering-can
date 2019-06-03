@@ -19,9 +19,13 @@ class Watering < ApplicationRecord
       @container = @dispenser.containers.last
       @last = @container.waterings.last
       @plants.each do |plant|
-        @watering = Watering.create(:plant_id => plant.id, :date => Date.current, :container_id => @container.id, :end_vacation => @last.end_vacation, :start_vacation => @last.start_vacation, :leftover => 0, :vacation_days => (@last.end_vacation - Date.current))
+        @watering = Watering.new(:plant_id => plant.id, :date => Date.current, :container_id => @container.id, :end_vacation => @last.end_vacation, :start_vacation => @last.start_vacation, :leftover => 0)
+        @this = @last.end_vacation.to_date - Date.current
+        @days_array = @this.to_s.split("/")
+        @watering.vacation_days = @days_array[0]
+        @watering.save
         @watering.update(:leftover => (@watering.starting_amount(@last, @container) - plant.water_quantity))
-        @next = (@watering.date + plant.water_frequency)
+        @next = (@watering.date.to_date + plant.water_frequency)
         plant.update(:last_day_watered => @watering.date, :next_water_day => @next)
         if @watering.leftover < 0
           @disp = Dispenser.find_by_id(@watering.container.dispenser_id)

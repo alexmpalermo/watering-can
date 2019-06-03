@@ -6,13 +6,15 @@ class Plant < ApplicationRecord
   scope :water_soon, -> {where(needs_water: 'true')}
 
   def self.water_today
-    @need_w = self.all.select {|p| p.needs_water == "true"}
-    @todays = @need_w.select {|p| p.water_frequency >= p.days_left}
+    @need_w = self.all.select {|p| p.needs_water == true}
+    @todays = @need_w.select {|p| p.water_frequency <= p.days_left.to_i}
     @todays
   end
 
   def days_left
-    Date.current - self.last_day_watered
+    day_string = Date.current - self.last_day_watered.to_date
+    array = day_string.to_s.split("/")
+    array[0]
   end
 
   def check_water(vacation)
