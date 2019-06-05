@@ -19,7 +19,6 @@ class Watering < ApplicationRecord
       @container = @dispenser.containers.last
       @last = @container.waterings.last
       @plants.each do |plant|
-        plant.check_water(@last.vacation_days)
         @watering = Watering.new(:plant_id => plant.id, :date => Date.current, :container_id => @container.id, :end_vacation => @last.end_vacation, :start_vacation => @last.start_vacation, :leftover => 0)
         @this = @last.end_vacation.to_date - Date.current
         @days_array = @this.to_s.split("/")
