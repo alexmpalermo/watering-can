@@ -22,6 +22,7 @@ class PlantsController < ApplicationController
     @plant = Plant.new(plant_params)
     @plant.last_day_watered = Date.current
     @plant.next_water_day = (Date.current + @plant.water_frequency)
+    @plant.needs_water = false
     @plant.dispenser = @dispenser
     if @plant.save
       Watering.create(:plant_id => @plant.id, :container_id => @dispenser.containers.last.id, :vacation_days => 0, :start_vacation => (Date.current - 1), :end_vacation => (Date.current - 1), :date => Date.current, :leftover => 0)
