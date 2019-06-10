@@ -22,8 +22,8 @@ class User < ApplicationRecord
             else
               plant.update(:needs_water => 'false')
             end
-            Watering.water(disp.id) unless Watering.vacation_over?(disp.id)
           end
+          Watering.water(disp.id) unless Watering.vacation_over?(disp.id)
         end
       end
     end
