@@ -337,6 +337,16 @@ h1 {
   width: 70%;
 }
 
+.scroll_box {
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 70%;
+  max-height: 450px;
+  overflow: auto;
+}
+
 /* ///////////// BUTTONS/links //////////////// */
 
 a:link, a:visited, a:active {
