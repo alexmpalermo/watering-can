@@ -1,8 +1,10 @@
-<div class="background loginb">
+<div class="background">
 <%= render partial: "navbarlogin" %>
 <br><br><br>
+
 <h1 class="center"> Log In </h1>
 <br>
+
 <div class="center yeseva">
 <%= form_for(@user, url: login_path) do |f| %>
 Email: <%= f.text_field :email %>

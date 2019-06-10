@@ -271,7 +271,7 @@ h1 {
 /* ///////////// BACKGROUNDS ////////////// */
 
 .background {
-  background: url("https://imgur.com/6erPeo2.jpg") no-repeat center center fixed;
+  background: url("https://imgur.com/IM0UrvD.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -280,46 +280,54 @@ h1 {
 }
 
 .usershowb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/QfbiUAB.jpg") no-repeat center center fixed;
 }
 
 .homeb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/QfbiUAB.jpeg") no-repeat center center fixed;
 }
 
 .signupb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/iYHqbB3.jpeg") no-repeat center center fixed;
 }
 
 .loginb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/2CAw7Sk.jpeg") no-repeat center center fixed;
 }
 
 .newplantb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/iYHqbB3.jpeg") no-repeat center center fixed;
 }
 
 .editplantb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/iYHqbB3.jpeg") no-repeat center center fixed;
 }
 
 .plantindexb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/02ZGVOB.jpeg") no-repeat center center fixed;
 }
 
 .newdispb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/DKL1yDz.jpeg") no-repeat center center fixed;
 }
 
 .editdispb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/DKL1yDz.jpeg") no-repeat center center fixed;
 }
 
 .dispindexb {
-  background: url("https://imgur.com/IM0UrvD.jpeg") no-repeat center center fixed;
+  background: url("https://imgur.com/02ZGVOB.jpeg") no-repeat center center fixed;
 }
 
 /* //////////////// FORMS /////////////// */
+
+.lower {
+  margin-top: 80px;
+}
+
+.login_lower {
+  margin-top: 50px;
+}
 
 /* ///////////// BOXes //////////////// */
 
