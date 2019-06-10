@@ -71,6 +71,7 @@ body.flash-active {
 
 .col--right {
   flex-grow: 1;
+  padding-right: 50px;
 }
 
 .col--full {
@@ -85,10 +86,11 @@ body.flash-active {
 .col--full2 {
   -ms-flex-positive: 1;
   -webkit-box-flex: 1;
-  flex-grow: 6;
+  flex-grow: 18;
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
   max-width: 100%;
+  padding-left: 50px;
 }
 
 .col--start {
