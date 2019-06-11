@@ -29,7 +29,7 @@ class PlantsController < ApplicationController
       flash[:success] = "#{@plant.name} has been successfully created."
       redirect_to dispenser_plants_path(@dispenser)
     else
-      flash[:error] = "All fields must be filled in."
+      error_messages(@plant)
       render :new
     end
   end
@@ -47,7 +47,7 @@ class PlantsController < ApplicationController
       flash[:success] = "#{@plant.name} has been successfully updated."
       redirect_to dispenser_plants_path(@dispenser)
     else
-      flash[:error] = "All fields must be filled in."
+      error_messages(@plant)
       return redirect_to edit_dispenser_plant_path(@dispenser, @plant)
     end
   end

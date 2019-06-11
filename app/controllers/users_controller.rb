@@ -14,11 +14,8 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       redirect_to user_path(@user)
-    elsif params[:user][:password] != params[:user][:password_confirmation]
-      flash[:error] = "Password must match Password Confirmation."
-      render :signup
     else
-      flash[:error] = "All fields must be filled in. Email cannot be one that is already used."
+      error_messages(@user)
       render :signup
     end
   end

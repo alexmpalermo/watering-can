@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         log_in(@user)
         redirect_to home_path
       else
-        flash[:error] = "Invalid email or password."
+        error_messages(@user)
         return redirect_to login_path
       end
     end

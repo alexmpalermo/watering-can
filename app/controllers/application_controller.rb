@@ -34,4 +34,9 @@ class ApplicationController < ActionController::Base
       redirect_to home_path
     end
   end
+
+  def error_messages(thing) 
+    @errors = thing.errors.full_messages.map {|error| error << ". " }
+    flash[:error] = @errors.join("")
+  end
 end

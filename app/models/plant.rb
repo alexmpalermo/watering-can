@@ -6,8 +6,7 @@ class Plant < ApplicationRecord
   scope :water_soon, -> {where(needs_water: 'true')}
 
   def self.water_today
-    @need_w = self.all.select {|p| p.needs_water == true}
-    @todays = @need_w.select {|p| p.water_frequency <= p.days_left.to_i}
+    @todays = self.water_soon.select {|p| p.water_frequency <= p.days_left.to_i}
     @todays
   end
 
@@ -18,8 +17,6 @@ class Plant < ApplicationRecord
   end
 
   def check_water(vacation)
-    #if (Date.current == self.waterings.last.end_vacation.to_date) && (Date.current == self.next_water_day.to_date)
-    #  self.update(:needs_water => 'true')
     if (Date.current + vacation.to_i) >= self.next_water_day.to_date
       self.update(:needs_water => 'true')
     else
