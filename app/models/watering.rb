@@ -35,7 +35,7 @@ class Watering < ApplicationRecord
           plant.check_water(@w_new.vacation_days)
         else
           plant.check_water(@watering.vacation_days)
-        end
+        end 
       end
     end
   end
