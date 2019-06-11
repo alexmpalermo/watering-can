@@ -18,7 +18,7 @@ class User < ApplicationRecord
         user.dispensers.each do |disp|
           disp.plants.each do |plant|
             #if plant.waterings.last.end_vacation.to_date >= plant.next_water_day.to_date
-            plant.check_water(plant.waterings.last.vacation_days.to_i)
+            plant.check_water(plant.waterings.last.vacation_days.to_i) unless Watering.vacation_over?(disp.id)
             #  plant.update(:needs_water => 'true')
             #else
             #  plant.update(:needs_water => 'false')

@@ -15,7 +15,7 @@ Specs:
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
     user has secure password, validates presence of name,email,password, unique email
     dispenser validates presence product #, capacity, name, unique product #
-    plants validates presence name, location, water q and f
+    plants validates presence name, location, water quantity and frequency
     waterings validates vacation days can't be < 0
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
     Plant.water_soon used in Watering.vacation_over?
