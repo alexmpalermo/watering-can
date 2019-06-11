@@ -27,12 +27,11 @@ class Plant < ApplicationRecord
     end
   end
 
-  def self.vacation_start(pd, pv)
-    @plants = Plant.all.select {|p| p.dispenser_id == pd}
-    @plants.each do |plant|
+  def self.vacation_start(dispenser, vacation)
+    dispenser.plants.each do |plant|
       @next = (Date.current + plant.water_frequency)
       plant.update(:last_day_watered => Date.current, :next_water_day => @next)
-      plant.check_water(pv)
+      plant.check_water(vacation)
     end
   end
 end
