@@ -1,26 +1,24 @@
 <div class="background plantindexb">
-<%= render partial: "navbar" %>
-<br><br><br>
-<div class="center">
-<h1><%= @dispenser.name %></h1>
+  <%= render partial: "navbar" %>
+  <br><br><br>
+  <div class="center">
+    <h1><%= @dispenser.name %></h1>
 
-<button class="rename-add"><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></button>
-
-<button class="rename-add"><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></button>
-</div>
-<br>
-<div class="section shadow scroll_box">
-<ol>
-<% @dispenser.plants.each do |plant| %>
-
-  <li class="yeseva"><%= link_to plant.name, edit_dispenser_plant_path(@dispenser, plant), :class => "plantlink" %> - <%= plant.location %></li>
-    <ul>
-      <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
-      <% unless plant.next_water_day.blank? && plant.last_day_watered.blank? %>
-      <li>Last day watered: <%= plant.last_day_watered.to_date.strftime("%m/%d/%Y") %>, Next water day: <%= plant.next_water_day.to_date.strftime("%m/%d/%Y") %></li>
+    <button class="rename-add"><%= link_to("Edit Can", edit_dispenser_path(@dispenser)) %></button>
+    <button class="rename-add"><%= link_to("Add a plant", new_dispenser_plant_path(@dispenser)) %></button>
+  </div>
+  <br>
+  <div class="section shadow scroll_box">
+    <ol>
+      <% @dispenser.plants.each do |plant| %>
+      <li class="yeseva"><%= link_to plant.name, edit_dispenser_plant_path(@dispenser, plant), :class => "plantlink" %> - <%= plant.location %></li>
+      <ul>
+        <li>Water <%= plant.water_quantity %>oz, every <%= plant.water_frequency %> day(s)</li>
+        <% unless plant.next_water_day.blank? && plant.last_day_watered.blank? %>
+        <li>Last day watered: <%= plant.last_day_watered.to_date.strftime("%m/%d/%Y") %>, Next water day: <%= plant.next_water_day.to_date.strftime("%m/%d/%Y") %></li>
+        <% end %>
+      </ul>
       <% end %>
-    </ul>
-<% end %>
-</ol>
-</div>
+    </ol>
+  </div>
 </div>

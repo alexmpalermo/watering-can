@@ -1,24 +1,21 @@
 <div class="background dispindexb">
-<%= render partial: "navbar" %>
-<br>
-<br>
-<br>
-<h1 class="center">My Watering Cans</h1>
-<p class="center yeseva">Click on a Can to edit or add plants</p>
-<br>
-<div class="scroll_box">
-<% @user.dispensers.each do |disp| %>
+  <%= render partial: "navbar" %>
+  <br><br><br>
+  <h1 class="center">My Watering Cans</h1>
+  <p class="center yeseva">Click on a Can to edit or add plants</p>
+  <br>
+  <div class="scroll_box">
+    <% @user.dispensers.each do |disp| %>
 
-<div class="section shadow">
-<h2><%= link_to disp.name, dispenser_plants_path(disp), :class => "disp-font" %></h2>
+    <div class="section shadow">
+      <h2><%= link_to disp.name, dispenser_plants_path(disp), :class => "disp-font" %></h2>
 
-<ol class="yeseva">
-  <% disp.plants.each do |plant| %>
-  <li><%= link_to plant.name, edit_dispenser_plant_path(disp, plant), :class => "plantlink" %> - <%= plant.location %></li>
-  <% end %>
-</ol>
-</div>
-<% end %>
-</div>
-
+      <ol class="yeseva">
+        <% disp.plants.each do |plant| %>
+        <li><%= link_to plant.name, edit_dispenser_plant_path(disp, plant), :class => "plantlink" %> - <%= plant.location %></li>
+        <% end %>
+      </ol>
+    </div>
+    <% end %>
+  </div>
 </div>

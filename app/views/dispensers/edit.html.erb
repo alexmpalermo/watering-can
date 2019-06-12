@@ -1,17 +1,17 @@
 <div class="background editdispb">
-<%= render partial: "navbar" %>
-<br><br><br>
-<div class="center">
-<h1>Rename This Watering Can</h1>
-<%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :patch) do |f| %>
-<%= f.text_field :name, placeholder: @dispenser.name %>
-<%= f.submit "Rename Can" %>
-<% end %>
+  <%= render partial: "navbar" %>
+  <br><br><br>
+  <div class="center">
+    <h1>Rename This Watering Can</h1>
+    <%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :patch) do |f| %>
+      <%= f.text_field :name, placeholder: @dispenser.name %>
+      <%= f.submit "Rename Can" %>
+    <% end %>
 
-<p class="bold">- or -</p>
+    <p class="bold">- or -</p>
 
-<%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :delete) do |f| %>
-<%= f.submit "Delete This Watering Can" %>
-<% end %>
-</div>
+    <%= form_for(@dispenser, url: dispenser_path(@dispenser), method: :delete) do |f| %>
+      <%= f.submit "Delete This Watering Can" %>
+    <% end %>
+  </div>
 </div>

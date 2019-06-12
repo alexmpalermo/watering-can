@@ -1,29 +1,23 @@
 <div class="background usershowb">
-<%= render partial: "navbar", locals: { user: @user } %>
+  <%= render partial: "navbar", locals: { user: @user } %>
+  <br><br><br>
+  <div class="center">
+    <h1>Welcome, <%= @user.name %></h1>
+    <br>
+    <% if @user.check_disp? && @user.check_p?  %>
+      <% if Date.current <= @user.vacation_calculate %>
+      <% @array = (@user.vacation_calculate - Date.current).to_s.split('/') %>
+      <h3>Vacation Days Left: <%= @array[0] %></h3>
+      <% end %>
+    <% end %>
 
-<br><br><br>
-<div class="center">
-<h1>Welcome, <%= @user.name %></h1>
-
-<br>
-
-<% if @user.check_disp? && @user.check_p?  %>
-  <% if Date.current <= @user.vacation_calculate %>
-    <% @array = (@user.vacation_calculate - Date.current).to_s.split('/') %>
-    <h3>Vacation Days Left: <%= @array[0] %></h3>
-  <% end %>
-<% end %>
-
-
-<div class="yeseva">
-  <%= form_for(@watering, url: user_path(@user), method: :patch) do |f| %>
-  Select the amount of days you will be away: <%= f.select :vacation_days, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40'] %>
-  <%= f.submit "Set Vacation" %>
-  <% end %>
+    <div class="yeseva">
+      <%= form_for(@watering, url: user_path(@user), method: :patch) do |f| %>
+        Select the amount of days you will be away: <%= f.select :vacation_days, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40'] %>
+        <%= f.submit "Set Vacation" %>
+      <% end %>
+    </div>
+    <br>
+    <button class="new-can"><%= link_to("Register A New Watering Can", new_dispenser_path) %></button>
+  </div>
 </div>
-<br>
-
-<button class="new-can"><%= link_to("Register A New Watering Can", new_dispenser_path) %></button>
-
-  </div>
-  </div>
