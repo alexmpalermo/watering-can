@@ -39,11 +39,7 @@ class Watering < ApplicationRecord
   end
 
   def self.vacation_over?(disp_id)
-    if Plant.water_soon.where(:dispenser_id => disp_id)
-      false
-    else
-      true
-    end
+    Plant.water_soon.where(:dispenser_id => disp_id).empty?
   end
 
 end
