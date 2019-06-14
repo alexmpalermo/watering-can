@@ -21,11 +21,12 @@ class User < ApplicationRecord
               plant.check_water(plant.waterings.last.vacation_days.to_i)
             end
             Watering.water(disp)
-          end 
+          end
         end
       end
     end
   end
+
 
   def check_disp?
     if self.dispensers.empty?
