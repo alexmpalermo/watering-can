@@ -16,10 +16,12 @@ class User < ApplicationRecord
     self.all.each do |user|
       if user.check_disp? && user.check_p?
         user.dispensers.each do |disp|
-          disp.plants.each do |plant|
-            plant.check_water(plant.waterings.last.vacation_days.to_i) unless Watering.vacation_over?(disp.id)
+          if !Watering.vacation_over?(disp.id)
+            disp.plants.each do |plant|
+              plant.check_water(plant.waterings.last.vacation_days.to_i)
+            end
+            Watering.water(disp)
           end
-          Watering.water(disp) unless Watering.vacation_over?(disp.id)
         end
       end
     end
