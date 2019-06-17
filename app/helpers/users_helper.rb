@@ -10,14 +10,5 @@ module UsersHelper
     end
   end
 
-  def update_vacation_and_plants(user, vaca)
-    user.dispensers.each do |disp|
-      Plant.vacation_start(disp, vaca)
-      @container = Container.create(:dispenser_id => disp.id, :date => Date.current, :start_amount => 0)
-      @end_day = (Date.current + vaca.to_i)
-      @watering = Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => vaca.to_i, :date => Date.current, :start_vacation => Date.current, :plant_id => disp.plants.first.id)
-    end
-  end
 
-  
 end

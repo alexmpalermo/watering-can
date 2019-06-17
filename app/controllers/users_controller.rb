@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       redirect_unless_logged_current
       dispenser_plants_vaca_check(@user)
       @vaca = params[:watering][:vacation_days]
-      update_vacation_and_plants(@user, @vaca)
+      @user.update_vacation_and_plants(@vaca)
       flash[:notice] = "Vacation time has been successfully updated."
       return redirect_to user_path(@user)
     end

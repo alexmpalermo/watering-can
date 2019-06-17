@@ -16,17 +16,23 @@ class User < ApplicationRecord
     self.all.each do |user|
       if user.check_disp? && user.check_p?
         user.dispensers.each do |disp|
-          if !Watering.vacation_over?(disp.id)
-            disp.plants.each do |plant|
-              plant.check_water(plant.waterings.last.vacation_days.to_i)
-            end
-            Watering.water(disp)
+          disp.plants.each do |plant|
+            plant.check_water(plant.waterings.last.vacation_days.to_i) unless Watering.vacation_over?(disp.id)
           end
+          Watering.water(disp) unless Watering.vacation_over?(disp.id)
         end
       end
     end
   end
 
+  def update_vacation_and_plants(vaca)
+    self.dispensers.each do |disp|
+      Plant.vacation_start(disp, vaca)
+      @container = Container.create(:dispenser_id => disp.id, :date => Date.current, :start_amount => 0)
+      @end_day = (Date.current + vaca.to_i)
+      @watering = Watering.create(:container_id => @container.id, :leftover => 0, :end_vacation => @end_day, :vacation_days => vaca.to_i, :date => Date.current, :start_vacation => Date.current, :plant_id => disp.plants.first.id)
+    end
+  end
 
   def check_disp?
     if self.dispensers.empty?
