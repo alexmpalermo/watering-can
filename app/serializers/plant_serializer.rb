@@ -1,6 +1,5 @@
 class PlantSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :water_quantity, :water_frequency
+  attributes :id, :name, :location, :water_quantity, :water_frequency, :last_day_watered, :next_water_day
   belongs_to :dispenser
-  has_many :waterings
-  has_many :containers, :through => :waterings
+
 end

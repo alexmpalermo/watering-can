@@ -12,8 +12,8 @@
         <h2><%= link_to disp.name, dispenser_plants_path(disp), :class => "disp-font" %></h2>
       </div>
       <ol class="yeseva">
-        <div id="list-container">
-          <li><%= link_to "See Plants", dispenser_plants_path(disp), :class => "all_plants", :data_id => "#{disp.id}" %></li>
+        <div class="list-container" id=<%= disp.id %>>
+          <li><%= link_to "See Plants", dispenser_plants_path(disp), :class => "all_plants", :data_id => disp.id %></li>
         </div>
       </ol>
 

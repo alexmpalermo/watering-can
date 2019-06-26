@@ -5,10 +5,16 @@ class PlantsController < ApplicationController
     if @dispenser = Dispenser.find_by_id(params[:dispenser_id])
       @user = User.find_by_id(@dispenser.user_id)
       redirect_unless_logged_current
+      respond_to do |f|
+        f.html
+        f.json {render json: @dispenser}
+      end
     else
       redirect_to home_path
     end
   end
+
+
 
   def new
     @user = current_user
