@@ -21,8 +21,3 @@
     <% end %>
   </div>
 </div>
-
-
-<% disp.plants.each do |plant| %>
-<li><%= link_to plant.name, edit_dispenser_plant_path(disp, plant), :class => "plantlink" %> - <%= plant.location %></li>
-<% end %>

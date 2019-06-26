@@ -17,6 +17,11 @@ const dispBindClickHandlers = () => {
         })
       })
   })
+  //$(document).on('click', ".disp-edit-link", function(e) {
+  //  e.preventDefault()
+  //  $('#dispenser-name-container')
+
+  //})
 }
 
 function Dispenser(dispenser) {
@@ -31,7 +36,7 @@ function Dispenser(dispenser) {
 
 Dispenser.prototype.formatIndex = function(){
   let dispenserHtml = `
-  <h2><%= link_to ${this.name}, dispenser_plants_path(${this}), :class => "disp-font show-link" :data_id => ${this.id} %></h2>
+  <h2><%= link_to ${this.name}, dispenser_plants_path(${this}), :class => "disp-font disp-edit-link" :data_id => ${this.id} %></h2>
   `
   return dispenserHtml
 }
