@@ -3,6 +3,10 @@ class DispensersController < ApplicationController
 
   def index
     @user = current_user
+    respond_to do |f|
+      f.html
+      f.json {render json: @user}
+    end 
   end
 
   def new

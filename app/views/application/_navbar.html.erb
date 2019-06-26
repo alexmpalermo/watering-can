@@ -27,7 +27,7 @@
         </button>
         <div class="dropdown-content">
           <%= link_to("Account", user_path(@user)) %>
-          <%= link_to("My Watering Cans", dispensers_path) %>
+          <%= link_to "My Watering Cans", dispensers_path, class: "all_dispensers" %>
           <%= link_to("Register A New Can", new_dispenser_path) %>
         </div>
       </div>
