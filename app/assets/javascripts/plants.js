@@ -16,7 +16,6 @@ const bindClickHandlers = () => {
         let newPlant = new Plant(plant, newDispenser)
         let plantHtml = newPlant.formatPlantIndex()
         $('#'+newPlant.dispenser_id).append(plantHtml)
-        console.log(newPlant.dispenser_id)
       })
     })
   })
@@ -24,12 +23,15 @@ const bindClickHandlers = () => {
     e.preventDefault()
     let id = $(this).attr('data_id')
     let d_id = $(this).attr('disp-id')
-    fetch(`/dispensers/${d_id}/plants/${id}`)
+    fetch(`/dispensers/${d_id}/plants/${id}.json`)
     .then(res => res.json())
-    .then(plant => {
-      let newPlant = new Plant(plant)
+    .then(dispenser => {
+      let newDispenser = new Dispenser(dispenser)
+      let plant = newDispenser.plants.find(p => p.id == id);
+      let newPlant = new Plant(plant, newDispenser)
       let plantHtml = newPlant.formatPlantShow()
-      $('#'+newPlant.dispenser_id).append(plantHtml)
+      console.log(plantHtml)
+      $('#'+newPlant.dispenser_id+newPlant.id).append(plantHtml)
     })
   })
 }
@@ -59,18 +61,20 @@ function Plant(plant, disp) {
 Plant.prototype.formatPlantIndex = function(){
   let plantHtml = `
   <a href="/dispensers/${this.dispenser_id}/plants" class="plantlink show-link" data_id=${this.id} disp-id=${this.dispenser_id}><li>${this.name} - ${this.location}</li></a>
+  <div id=${this.dispenser_id}${this.id}></div>
   `
   return plantHtml
 }
 
 Plant.prototype.formatPlantShow = function(){
   let plantHtml = `
-  <ul>
-    <li>Water <%= ${this.water_quantity} %>oz, every <%= ${this.water_frequency} %> day(s)</li>
+  <ul id="plain-text">
+    <li>Water ${this.water_quantity}oz, every ${this.water_frequency} day(s)</li>
     <% unless ${this.next_water_day}.blank? && ${this.last_day_watered}.blank? %>
-    <li>Last day watered: <%= ${this.last_day_watered}.to_date.strftime("%m/%d/%Y") %>, Next water day: <%= ${this.next_water_day}.to_date.strftime("%m/%d/%Y") %></li>
+    <li>Last day watered: ${this.last_day_watered}.to_date.strftime("%m/%d/%Y"), Next water day: ${this.next_water_day}.to_date.strftime("%m/%d/%Y")</li>
     <% end %>
-    <a href="/dispensers/${this.dispenser_id}/plants/${this.id}"><li>Edit this plant</li></a>
+    <a href="/dispensers/${this.dispenser_id}/plants/${this.id}/edit" id="plant-edit"><li>Edit this plant</li></a>
   </ul>
   `
+  return plantHtml
 }
