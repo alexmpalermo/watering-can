@@ -66,13 +66,19 @@ Plant.prototype.formatPlantIndex = function(){
   return plantHtml
 }
 
+function parseDate(x) {
+  let date = x
+  let arr = date.split("-");
+  arr.push(arr.shift());
+  date = arr.join("/");
+  return date
+}
+
 Plant.prototype.formatPlantShow = function(){
   let plantHtml = `
   <ul id="plain-text">
     <li>Water ${this.water_quantity}oz, every ${this.water_frequency} day(s)</li>
-    <% unless ${this.next_water_day}.blank? && ${this.last_day_watered}.blank? %>
-    <li>Last day watered: ${this.last_day_watered}.to_date.strftime("%m/%d/%Y"), Next water day: ${this.next_water_day}.to_date.strftime("%m/%d/%Y")</li>
-    <% end %>
+    <li>Last day watered: ${parseDate(this.last_day_watered)}, Next water day: ${parseDate(this.next_water_day)}</li>
     <a href="/dispensers/${this.dispenser_id}/plants/${this.id}/edit" id="plant-edit"><li>Edit this plant</li></a>
   </ul>
   `
