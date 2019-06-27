@@ -6,7 +6,7 @@ class DispensersController < ApplicationController
     respond_to do |f|
       f.html
       f.json {render json: @user}
-    end 
+    end
   end
 
   def new
@@ -37,7 +37,10 @@ class DispensersController < ApplicationController
     @dispenser = Dispenser.find_by_id(params[:id])
     if @dispenser.update(:name => params[:dispenser][:name])
       flash[:success] = "#{@dispenser.name} has been successfully updated."
-      redirect_to dispenser_plants_path(@dispenser)
+      respond_to do |f|
+        f.html {redirect_to dispenser_plants_path(@dispenser)}
+        f.json {render json: @dispenser}
+      end
     else
       error_messages(@dispenser)
       return redirect_to edit_dispenser_path(@dispenser)
