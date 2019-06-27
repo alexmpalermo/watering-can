@@ -408,6 +408,10 @@ a:link.logo, a:visited.logo, a:active.logo {
   margin: 8px;
 }
 
+#upsize {
+  width: 160px;
+}
+
 .new-can {
   text-align: center;
   background: radial-gradient(white, #007b5f);
