@@ -29,8 +29,8 @@ const bindClickHandlers = () => {
       let newDispenser = new Dispenser(dispenser)
       let plant = newDispenser.plants.find(p => p.id == id);
       let newPlant = new Plant(plant, newDispenser)
+      $('#'+newPlant.dispenser_id+newPlant.id).html('')
       let plantHtml = newPlant.formatPlantShow()
-      console.log(plantHtml)
       $('#'+newPlant.dispenser_id+newPlant.id).append(plantHtml)
     })
   })
