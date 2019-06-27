@@ -9,7 +9,7 @@
 
     <div class="section shadow">
       <div id='<%= disp.id %>-name-container'>
-        <h2><%= link_to disp.name, dispenser_plants_path(disp), :class => "disp-font disp-name-edit", :data_id => disp.id %></h2>
+        <h2><%= link_to disp.name, edit_dispenser_path(disp), :class => "disp-font disp-name-edit", :data_id => disp.id %></h2>
       </div>
       <ol class="yeseva">
         <div class="list-container" id=<%= disp.id %>>
@@ -24,13 +24,3 @@
     <% end %>
   </div>
 </div>
-
-<script id="dispenser-template" type="text/x-handlebars-template">
-  <h2 id="dispenser_{{id}}">
-    <form class="edit_dispenser" id="edit_dispenser_19" action="/dispensers/19" accept-charset="UTF-8" method="post">
-      <input name="utf8" type="hidden" value="✓">
-      <input type="hidden" name="_method" value="patch">
-      <input type="hidden" name="authenticity_token" value="I6yJ4kyhNrfbHtWtiwZddITd+ISgUNo1P0EA5YCwL7dYHjiVDLgdH9w6Q3hvEfYHY8wfRhXEMrnQyihYUnwhiA==">
-      <input placeholder="Room 1" type="text" value="Room 1" name="dispenser[name]" id="dispenser_name">
-      <input type="submit" name="commit" value="Rename Can" data-disable-with="Rename Can">
-  </form>

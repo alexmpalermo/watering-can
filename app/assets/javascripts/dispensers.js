@@ -1,38 +1,78 @@
-Dispenser.success = function(json){
-  var dispenser = newDispenser(json);
-  var dispenserLi = dispenser.renderLi()
-  $('#'+newDispenser.id+'-name-container').append(dispenserLi)
+
+
+/////
+$(() => {
+  editDispHandlers()
+})
+
+const editDispHandlers = () => {
+  $(document).on('click', '.disp-name-edit', function(e) {
+    e.preventDefault()
+    let disp_id = $(this).attr('data_id')
+    fetch(`/dispensers/${disp_id}/edit.json`)
+    .then(res => res.json())
+    .then(dispenser => {
+      let newDisp = new Disp(dispenser)
+      $('#'+newDisp.id+'-name-container').html('')
+      let dispenserHtml = newDisp.formatDispenserNameField()
+      $('#'+newDisp.id+'-name-container').append(dispenserHtml)
+    })
+  })
+  $(document).on('submit', 'form.edit_dispenser', Disp.formSubmit)
 }
 
-Dispenser.error = function(response){
+Disp.formSubmit = function(e){
+  e.preventDefault()
+  let id = $(this).attr('data_id')
+  let $form = $(this);
+  $.ajax({
+    url: $form.attr("action"),
+    data: $form.serialize(),
+    dataType: "json",
+    method: ($("input[name='_method']").val() || $form.attr("method"))
+  })
+  .success(Disp.success)
+  .error(Disp.error)
+}
+
+function Disp(dispenser) {
+  this.id = dispenser.id
+  this.name = dispenser.name
+  this.product_number = dispenser.product_number
+  this.capacity = dispenser.capacity
+  this.user = dispenser.user
+  this.plants = dispenser.plants
+  this.containers = dispenser.containers
+}
+
+Disp.success = function(json){
+  let dispenser = newDisp(json);
+  $('#'+newDisp.id+'-name-container').html('')
+  let dispenserH2 = dispenser.renderH2()
+  $('#'+newDisp.id+'-name-container').append(dispenserH2)
+}
+
+Disp.error = function(response){
   console.log("There was an error", response)
 }
 
-Dispenser.formSubmit = function(e){
-  e.preventDefault()
-  var $form = $(this);
-  var action = $form.attr("action");
-  var params = $form.serialize();
-  $.ajax({
-    url: action,
-    data: params,
-    dataType: "json",
-    method: ($('input[name='_method']').val() || $form.attr("method"))
-  })
-  .success(Dispenser.success)
-  .error(Dispenser.error)
+Disp.prototype.renderH2 = function(){
+  let dispenserHtml = `
+  <h2><%= link_to ${this.name}, edit_dispenser_path(${this}), :class => "disp-font disp-name-edit", :data_id => ${this.id} %></h2>
+  `
+  return dispenserHtml
 }
 
-$(function(){
-  $('form.edit_dispenser).on('submit', Dispenser.formSubmit)
-})
-
-
-$(function(){
-  Dispenser.templateSource = $('#dispenser-template').html()
-  Dispenser.template = Handlebars.compile(Dispenser.templateSource);
-})
-
-Dispenser.prototype.renderLi = function(){
-  return Dispenser.template(this)
+Disp.prototype.formatDispenserNameField = function(){
+  let authToken = $('meta[name=csrf-token]').attr('content')
+  let dispenserHtml = `
+  <form class="edit_dispenser" id="edit_dispenser_${this.id}" action="/dispensers/${this.id}" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value=${authToken}>
+    <input placeholder="${this.name}" type="text" value="${this.name}" name="dispenser[name]" id="dispenser_name">
+    <input type="submit" name="commit" value="Rename Can" data-disable-with="Rename Can">
+  </form>
+  `
+  return dispenserHtml
 }

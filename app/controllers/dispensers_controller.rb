@@ -3,10 +3,6 @@ class DispensersController < ApplicationController
 
   def index
     @user = current_user
-    respond_to do |f|
-      f.html
-      f.json {render json: @user}
-    end
   end
 
   def new
@@ -31,6 +27,10 @@ class DispensersController < ApplicationController
   def edit
     @user = current_user
     @dispenser = Dispenser.find_by_id(params[:id])
+    respond_to do |f|
+      f.html
+      f.json {render json: @dispenser}
+    end
   end
 
   def update
@@ -38,7 +38,7 @@ class DispensersController < ApplicationController
     if @dispenser.update(:name => params[:dispenser][:name])
       flash[:success] = "#{@dispenser.name} has been successfully updated."
       respond_to do |f|
-        f.html {redirect_to dispenser_plants_path(@dispenser)}
+        f.html {redirect_to dispensers_path(@dispenser)}
         f.json {render json: @dispenser}
       end
     else
