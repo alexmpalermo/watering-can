@@ -46,9 +46,9 @@ function Disp(dispenser) {
 }
 
 Disp.success = function(json){
-  let dispenser = newDisp(json);
+  let newDisp = new Disp(json);
   $('#'+newDisp.id+'-name-container').html('')
-  let dispenserH2 = dispenser.renderH2()
+  let dispenserH2 = newDisp.renderH2()
   $('#'+newDisp.id+'-name-container').append(dispenserH2)
 }
 
@@ -58,7 +58,7 @@ Disp.error = function(response){
 
 Disp.prototype.renderH2 = function(){
   let dispenserHtml = `
-  <h2><%= link_to ${this.name}, edit_dispenser_path(${this}), :class => "disp-font disp-name-edit", :data_id => ${this.id} %></h2>
+  <h2><a class="disp-font disp-name-edit" data_id="${this.id}" href="/dispensers/${this.id}/edit">${this.name}</a></h2>
   `
   return dispenserHtml
 }
