@@ -2,6 +2,8 @@
 
 This Rails project app is designed for plant owners to keep their plants watered while they are on vacation.
 
+![](JSwateringcan.gif)
+
 ## Installation
 
 Add this line to your application's Gemfile:
