@@ -3,7 +3,7 @@
   <br><br><br>
   <div class="center">
     <h1>Edit This Plant</h1>
-    <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :patch) do |f| %>
+    <%= form_for(@plant, url: dispenser_plant_path(@plant.dispenser, @plant), method: :patch) do |f| %>
       Name: <%= f.text_field :name, placeholder: @plant.name %>
       <br>
       Location: <%= f.text_field :location, placeholder: @plant.location %>
@@ -17,7 +17,7 @@
 
     <p class="bold">- or -</p>
 
-    <%= form_for(@plant, url: dispenser_plant_path(@dispenser, @plant), method: :delete) do |f| %>
+    <%= form_for(@plant, url: dispenser_plant_path(@plant.dispenser, @plant), method: :delete) do |f| %>
       <%= f.submit "Delete this plant" %>
     <% end %>
   </div>

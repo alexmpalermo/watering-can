@@ -8,12 +8,11 @@ const bindClickHandlers = () => {
     let disp_id = $(this).attr('data_id')
     fetch(`/dispensers/${disp_id}/plants.json`)
     .then(res => res.json())
-    .then(dispenser => {
-      let newDispenser = new Dispenser(dispenser)
-      let plants = newDispenser.plants
-      $('#'+newDispenser.id).html('')
+    .then(plants =>
+      {
+      $('#'+disp_id).html('')
       plants.forEach((plant) => {
-        let newPlant = new Plant(plant, newDispenser)
+        let newPlant = new Plant(plant)
         let plantHtml = newPlant.formatPlantIndex()
         $('#'+newPlant.dispenser_id).append(plantHtml)
       })
@@ -25,10 +24,8 @@ const bindClickHandlers = () => {
     let d_id = $(this).attr('disp-id')
     fetch(`/dispensers/${d_id}/plants/${id}.json`)
     .then(res => res.json())
-    .then(dispenser => {
-      let newDispenser = new Dispenser(dispenser)
-      let plant = newDispenser.plants.find(p => p.id == id);
-      let newPlant = new Plant(plant, newDispenser)
+    .then(plant => {
+      let newPlant = new Plant(plant)
       $('#'+newPlant.dispenser_id+newPlant.id).html('')
       let plantHtml = newPlant.formatPlantShow()
       $('#'+newPlant.dispenser_id+newPlant.id).append(plantHtml)
@@ -36,17 +33,7 @@ const bindClickHandlers = () => {
   })
 }
 
-function Dispenser(dispenser) {
-  this.id = dispenser.id
-  this.name = dispenser.name
-  this.product_number = dispenser.product_number
-  this.capacity = dispenser.capacity
-  this.user = dispenser.user
-  this.plants = dispenser.plants
-  this.containers = dispenser.containers
-}
-
-function Plant(plant, disp) {
+function Plant(plant) {
   this.id = plant.id
   this.name = plant.name
   this.location = plant.location
@@ -54,7 +41,7 @@ function Plant(plant, disp) {
   this.water_frequency = plant.water_frequency
   this.last_day_watered = plant.last_day_watered
   this.next_water_day = plant.next_water_day
-  this.dispenser_id = disp.id
+  this.dispenser_id = plant.dispenser_id
 
 }
 

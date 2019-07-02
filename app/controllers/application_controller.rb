@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_by_id(session[:user_id])
+    @user = User.find_by_id(session[:user_id])
   end
 
   def logged_in_or_redirect
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def error_messages(thing) 
+  def error_messages(thing)
     @errors = thing.errors.full_messages.map {|error| error << ". " }
     flash[:error] = @errors.join("")
   end

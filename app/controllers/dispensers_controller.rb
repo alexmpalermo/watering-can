@@ -1,17 +1,15 @@
 class DispensersController < ApplicationController
-  before_action :require_login
+  before_action :require_login, :current_user
+  before_action :check_d_exists, except: [:index, :new, :create]
 
   def index
-    @user = current_user
   end
 
   def new
-    @user = current_user
     @dispenser = Dispenser.new
   end
 
   def create
-    @user = current_user
     @dispenser = Dispenser.new(dispenser_params)
     @dispenser.user = @user
     if @dispenser.save
@@ -25,8 +23,6 @@ class DispensersController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    @dispenser = Dispenser.find_by_id(params[:id])
     respond_to do |f|
       f.html
       f.json {render json: @dispenser}
@@ -34,7 +30,6 @@ class DispensersController < ApplicationController
   end
 
   def update
-    @dispenser = Dispenser.find_by_id(params[:id])
     if @dispenser.update(:name => params[:dispenser][:name])
       flash[:success] = "#{@dispenser.name} has been successfully updated."
       respond_to do |f|
@@ -48,7 +43,6 @@ class DispensersController < ApplicationController
   end
 
   def destroy
-    @dispenser = Dispenser.find_by_id(params[:id])
     name = @dispenser.name
     @dispenser.destroy
     flash[:success] = "#{name} has been successfully deleted."
@@ -60,5 +54,11 @@ class DispensersController < ApplicationController
 
   def dispenser_params
     params.require(:dispenser).permit(:name, :product_number, :capacity)
+  end
+
+  def check_d_exists
+    unless @dispenser = Dispenser.find_by_id(params[:id])
+      redirect_to home_path
+    end
   end
 end
