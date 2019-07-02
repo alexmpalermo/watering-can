@@ -1,7 +1,6 @@
 class Plant < ApplicationRecord
   belongs_to :dispenser
-  has_many :waterings
-  has_many :containers, :through => :waterings
+  has_one :watering
   validates :name, :location, :water_quantity, :water_frequency, presence: true
   scope :water_soon, -> {where(needs_water: 'true')}
 

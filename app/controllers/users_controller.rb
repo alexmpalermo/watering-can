@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     if @user = User.find_by_id(params[:id])
-      @watering = Watering.new
+      @dispenser = Dispenser.new 
       redirect_unless_logged_current
     else
       flash[:error] = "You must be signed up and logged in to access this section."
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         flash[:error] = "One or more of your Watering Cans do not have plants assigned to them yet. Please add plants or delete the unused dispenser by visiting My Watering Cans."
         return redirect_to user_path(@user)
       end
-      @vaca = params[:watering][:vacation_days]
+      @vaca = params[:dispenser][:vacation_days]
       @user.update_vacation_and_plants(@vaca)
       flash[:notice] = "Vacation time has been successfully updated."
       return redirect_to user_path(@user)

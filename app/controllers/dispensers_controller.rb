@@ -3,6 +3,7 @@ class DispensersController < ApplicationController
   before_action :check_d_exists, except: [:index, :new, :create]
 
   def index
+    @dispensers = @user.dispensers
   end
 
   def new
@@ -11,9 +12,10 @@ class DispensersController < ApplicationController
 
   def create
     @dispenser = Dispenser.new(dispenser_params)
+    @dispenser.vacation_days = 0
     @dispenser.user = @user
     if @dispenser.save
-      Container.create(:dispenser_id => @dispenser.id, :date => Date.current, :start_amount => 0)
+      @dispenser.update(:date_refilled => Date.current, :current_amount => 0, :start_vacation => (Date.current - 1), :end_vacation => (Date.current - 1))
       flash[:success] = "#{@dispenser.name} has been successfully registered."
       redirect_to dispensers_path(@dispenser)
     else

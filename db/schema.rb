@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_193528) do
-
-  create_table "containers", force: :cascade do |t|
-    t.integer "dispenser_id"
-    t.string "date"
-    t.integer "start_amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_07_02_223451) do
 
   create_table "dispensers", force: :cascade do |t|
     t.integer "user_id"
@@ -27,6 +19,11 @@ ActiveRecord::Schema.define(version: 2019_05_21_193528) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "date_refilled"
+    t.integer "current_amount"
+    t.integer "vacation_days"
+    t.string "end_vacation"
+    t.string "start_vacation"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -50,18 +47,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_193528) do
     t.datetime "updated_at", null: false
     t.string "google_token"
     t.string "google_refresh_token"
-  end
-
-  create_table "waterings", force: :cascade do |t|
-    t.integer "plant_id"
-    t.integer "container_id"
-    t.integer "vacation_days"
-    t.string "start_vacation"
-    t.string "end_vacation"
-    t.string "date"
-    t.integer "leftover"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

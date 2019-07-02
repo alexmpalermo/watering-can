@@ -40,9 +40,13 @@ function Disp(dispenser) {
   this.name = dispenser.name
   this.product_number = dispenser.product_number
   this.capacity = dispenser.capacity
+  this.date_refilled = dispenser.date_refilled
+  this.current_amount = dispenser.current_amount
+  this.vacation_days = dispenser.vacation_days
+  this.start_vacation = dispenser.start_vacation
+  this.end_vacation = dispenser.end_vacation
   this.user = dispenser.user
   this.plants = dispenser.plants
-  this.containers = dispenser.containers
 }
 
 Disp.success = function(json){

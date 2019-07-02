@@ -31,9 +31,8 @@ class PlantsController < ApplicationController
     @plant.needs_water = false
     @plant.dispenser = @dispenser
     if @plant.save
-      Watering.create(:plant_id => @plant.id, :container_id => @dispenser.containers.last.id, :vacation_days => 0, :start_vacation => (Date.current - 1), :end_vacation => (Date.current - 1), :date => Date.current, :leftover => 0)
       flash[:success] = "#{@plant.name} has been successfully created."
-      redirect_to dispenser_plants_path(@dispenser)
+      redirect_to dispensers_path(@dispenser)
     else
       error_messages(@plant)
       render :new
@@ -46,7 +45,7 @@ class PlantsController < ApplicationController
   def update
     if @plant.update(:name => params[:plant][:name], :location => params[:plant][:location], :water_quantity => params[:plant][:water_quantity], :water_frequency => params[:plant][:water_frequency])
       flash[:success] = "#{@plant.name} has been successfully updated."
-      redirect_to dispenser_plants_path(@plant.dispenser)
+      redirect_to dispensers_path(@plant.dispenser)
     else
       error_messages(@plant)
       return redirect_to edit_dispenser_plant_path(@plant.dispenser, @plant)
@@ -57,7 +56,7 @@ class PlantsController < ApplicationController
     name = @plant.name
     @plant.destroy
     flash[:success] = "#{name} has been successfully deleted."
-    redirect_to dispenser_plants_path(@plant.dispenser)
+    redirect_to dispensers_path(@plant.dispenser)
   end
 
   private

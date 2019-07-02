@@ -11,6 +11,7 @@ const bindClickHandlers = () => {
     .then(plants =>
       {
       $('#'+disp_id).html('')
+      plants.sort((a, b) => a.name.localeCompare(b.name))
       plants.forEach((plant) => {
         let newPlant = new Plant(plant)
         let plantHtml = newPlant.formatPlantIndex()
@@ -42,7 +43,6 @@ function Plant(plant) {
   this.last_day_watered = plant.last_day_watered
   this.next_water_day = plant.next_water_day
   this.dispenser_id = plant.dispenser_id
-
 }
 
 Plant.prototype.formatPlantIndex = function(){
